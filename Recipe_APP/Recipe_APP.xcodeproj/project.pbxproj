@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0774AA275B7E26002C07CB /* DataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0774A9275B7E26002C07CB /* DataTableView.swift */; };
+		0B0774AC275B8828002C07CB /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0774AB275B8828002C07CB /* DataCell.swift */; };
 		0B5F8FA0275A278600A1CA40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F8F9F275A278600A1CA40 /* AppDelegate.swift */; };
 		0B5F8FA5275A278600A1CA40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B5F8FA3275A278600A1CA40 /* Main.storyboard */; };
 		0B5F8FA8275A278600A1CA40 /* Recipe_APP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F8FA6275A278600A1CA40 /* Recipe_APP.xcdatamodeld */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0774A9275B7E26002C07CB /* DataTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableView.swift; sourceTree = "<group>"; };
+		0B0774AB275B8828002C07CB /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		0B5F8F9C275A278600A1CA40 /* Recipe_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipe_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5F8F9F275A278600A1CA40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B5F8FA4275A278600A1CA40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				0B5F8FA6275A278600A1CA40 /* Recipe_APP.xcdatamodeld */,
 				0B5F8FB4275A2AC100A1CA40 /* Login.swift */,
 				0B5F8FB6275A2BA700A1CA40 /* extension.swift */,
+				0B0774A9275B7E26002C07CB /* DataTableView.swift */,
+				0B0774AB275B8828002C07CB /* DataCell.swift */,
 			);
 			path = Recipe_APP;
 			sourceTree = "<group>";
@@ -142,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B5F8FB5275A2AC100A1CA40 /* Login.swift in Sources */,
+				0B0774AC275B8828002C07CB /* DataCell.swift in Sources */,
 				0B5F8FA8275A278600A1CA40 /* Recipe_APP.xcdatamodeld in Sources */,
+				0B0774AA275B7E26002C07CB /* DataTableView.swift in Sources */,
 				0B5F8FA0275A278600A1CA40 /* AppDelegate.swift in Sources */,
 				0B5F8FB7275A2BA700A1CA40 /* extension.swift in Sources */,
 			);

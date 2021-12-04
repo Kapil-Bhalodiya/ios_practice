@@ -9,14 +9,28 @@
 import UIKit
 
 class Login: UIViewController {
+    private let uname = "Admin"
+    private let password = "Admin"
+    
     private let mylbl:UILabel={
         let lbl = UILabel()
         lbl.text = "Receipt"
         lbl.textColor = .green
+        lbl.font = UIFont.boldSystemFont(ofSize: 50)
         lbl.font = UIFont(name: "HelveticaNeue-UltraLight", size: 50)
         lbl.textAlignment = .center
         return lbl
     }()
+    
+    private let errlbl:UILabel={
+        let lbl = UILabel()
+        lbl.text = ""
+        lbl.textColor = .red
+        lbl.font = UIFont.boldSystemFont(ofSize: 30)
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
     private let mytextemail:UITextField = {
         let txtemail = UITextField()
         txtemail.placeholder = "Enter Your Email"
@@ -55,6 +69,7 @@ class Login: UIViewController {
         view.addSubview(mytextemail)
         view.addSubview(mytextpass)
         view.addSubview(mybutton)
+        view.addSubview(errlbl)
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,10 +77,21 @@ class Login: UIViewController {
         mytextemail.frame = CGRect(x: 50, y: view.height / 3, width: view.width-100, height: 40)
         mytextpass.frame = CGRect(x: 50, y: mytextemail.bottom+20, width: view.width-100, height: 40)
         mybutton.frame = CGRect(x: 60, y: mytextpass.bottom+30, width: view.width-120, height: 40)
+        errlbl.frame = CGRect(x: 50, y: mybutton.bottom+50, width: view.width-100, height: view.height)
     }
     
     @objc func MoveToLogin(){
-    
+        if(mytextemail.text == uname && mytextpass.text == password){
+            print("OK")
+            let dtv = DataTableView()
+            let nav = UINavigationController(rootViewController: dtv)
+            //nav.modalTransitionStyle = .fullScreen
+            nav.setNavigationBarHidden(true, animated: false)
+            present(nav,animated: false)
+        }else{
+            print("hey")
+            errlbl.text = "Invalid Username and Password...!"
+        }
     }
 
 }
