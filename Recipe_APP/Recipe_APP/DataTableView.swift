@@ -23,9 +23,13 @@ class DataTableView: UIViewController {
         super.viewDidLayoutSubviews()
         tblView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
     }
-    
 }
 extension DataTableView:UITableViewDelegate,UITableViewDataSource{
+    private func passdata(){
+        let cs = DetailScreen()
+        navigationController?.pushViewController(cs, animated: false)
+        present(cs, animated: false, completion: nil)
+    }
     
     private func setupData(){
         tblView.dataSource = self
@@ -42,6 +46,13 @@ extension DataTableView:UITableViewDelegate,UITableViewDataSource{
         cell.setUpDataCell(title: titleNameArray[indexPath.row],content: contentAray[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserDefaults.standard.setValue(nil, forKey: "listname")
+        //UserDefaults.standard.setValue(titleNameArray[indexPath.row], forKey: "listname")
+        passdata()
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }

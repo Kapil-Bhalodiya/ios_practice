@@ -14,9 +14,9 @@ class Login: UIViewController {
     
     private let mylbl:UILabel={
         let lbl = UILabel()
-        lbl.text = "Receipt"
+        lbl.text = "Recipe"
         lbl.textColor = .green
-        lbl.font = UIFont.boldSystemFont(ofSize: 50)
+        lbl.font = UIFont.boldSystemFont(ofSize: 100)
         lbl.font = UIFont(name: "HelveticaNeue-UltraLight", size: 50)
         lbl.textAlignment = .center
         return lbl
@@ -84,10 +84,12 @@ class Login: UIViewController {
         if(mytextemail.text == uname && mytextpass.text == password){
             print("OK")
             let dtv = DataTableView()
-            let nav = UINavigationController(rootViewController: dtv)
+            //let nav = UINavigationController(rootViewController: dtv)
             //nav.modalTransitionStyle = .fullScreen
-            nav.setNavigationBarHidden(true, animated: false)
-            present(nav,animated: false)
+            navigationController?.pushViewController(dtv, animated: true)
+            //nav.setNavigationBarHidden(true, animated: false)
+            present(dtv,animated: false)
+            //self.dismiss(animated: false, completion: nil)
         }else{
             print("hey")
             errlbl.text = "Invalid Username and Password...!"
