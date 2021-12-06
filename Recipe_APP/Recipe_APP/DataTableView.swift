@@ -48,8 +48,7 @@ extension DataTableView:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UserDefaults.standard.setValue(nil, forKey: "listname")
-        //UserDefaults.standard.setValue(titleNameArray[indexPath.row], forKey: "listname")
+        UserDefaults.standard.setValue(titleNameArray[indexPath.row], forKey: "listname")
         passdata()
     }
     
