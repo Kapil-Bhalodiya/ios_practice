@@ -10,8 +10,8 @@ import UIKit
 
 class DataTableView: UIViewController {
     private let tblView = UITableView()
-    private let titleNameArray = ["American Burger","Healthy Burger","4 Cheese Pizza"]
-    private let contentAray = ["Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text"]
+    private let titleNameArray = ["American Burger","Healthy Burger","4 Cheese Pizza","American Burger","Healthy Burger","4 Cheese Pizza"]
+    private let contentAray = ["Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

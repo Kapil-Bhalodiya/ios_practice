@@ -14,7 +14,7 @@ class DetailScreen: UIViewController {
     
     private let title1:UILabel = {
         let lbl = UILabel()
-        lbl.text = "dfsfsdf"
+        lbl.text = UserDefaults.standard.string(forKey: "listname")
         lbl.font = UIFont.boldSystemFont(ofSize:20)
         return lbl
     }()
