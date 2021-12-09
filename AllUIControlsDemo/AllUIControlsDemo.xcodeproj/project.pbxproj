@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0B280227621F9200ADEC84 /* Page3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B280127621F9100ADEC84 /* Page3.swift */; };
 		0B1F67EC27609EBD00F2832A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F67EB27609EBD00F2832A /* AppDelegate.swift */; };
 		0B1F67EE27609EBD00F2832A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F67ED27609EBD00F2832A /* ViewController.swift */; };
 		0B1F67F127609EBD00F2832A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1F67EF27609EBD00F2832A /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0B280127621F9100ADEC84 /* Page3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3.swift; sourceTree = "<group>"; };
 		0B1F67E827609EBD00F2832A /* AllUIControlsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllUIControlsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B1F67EB27609EBD00F2832A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B1F67ED27609EBD00F2832A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				0B1F67FD27609ED700F2832A /* Page1.swift */,
 				0B1F67FF2760A30C00F2832A /* Extension.swift */,
 				0B1F68012760B5E700F2832A /* Page2.swift */,
+				0B0B280127621F9100ADEC84 /* Page3.swift */,
 			);
 			path = AllUIControlsDemo;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				0B1F67EE27609EBD00F2832A /* ViewController.swift in Sources */,
 				0B1F67EC27609EBD00F2832A /* AppDelegate.swift in Sources */,
+				0B0B280227621F9200ADEC84 /* Page3.swift in Sources */,
 				0B1F67FE27609ED700F2832A /* Page1.swift in Sources */,
 				0B1F68002760A30C00F2832A /* Extension.swift in Sources */,
 				0B1F68022760B5E700F2832A /* Page2.swift in Sources */,

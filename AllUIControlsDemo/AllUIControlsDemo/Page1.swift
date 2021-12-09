@@ -17,6 +17,7 @@ class Page1: UIViewController {
         pc.addTarget(self, action: #selector(NextPage), for: .valueChanged)
         return pc
     }()
+    
     private let GetStartBtn : UIButton = {
         let btn = UIButton()
         btn.setTitle("Get Started", for: .normal)
@@ -25,6 +26,7 @@ class Page1: UIViewController {
         btn.layer.cornerRadius = 30
         return btn
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"bg_UI")!)

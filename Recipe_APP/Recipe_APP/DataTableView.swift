@@ -10,8 +10,8 @@ import UIKit
 
 class DataTableView: UIViewController {
     private let tblView = UITableView()
-    private let titleNameArray = ["American Burger","Healthy Burger","4 Cheese Pizza","American Burger","Healthy Burger","4 Cheese Pizza"]
-    private let contentAray = ["Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text"]
+    private let titleNameArray = ["American Burger","Healthy Burger","4 Cheese Pizza","Chinese"]
+    private let contentAray = ["Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text","Lorem Ipsum has been the industry's standard dummy text"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +25,6 @@ class DataTableView: UIViewController {
     }
 }
 extension DataTableView:UITableViewDelegate,UITableViewDataSource{
-    private func passdata(){
-        let cs = DetailScreen()
-        navigationController?.pushViewController(cs, animated: false)
-        present(cs, animated: false, completion: nil)
-    }
     
     private func setupData(){
         tblView.dataSource = self
@@ -49,7 +44,8 @@ extension DataTableView:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDefaults.standard.setValue(titleNameArray[indexPath.row], forKey: "listname")
-        passdata()
+        let cs = DetailScreen()
+        navigationController?.pushViewController(cs, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

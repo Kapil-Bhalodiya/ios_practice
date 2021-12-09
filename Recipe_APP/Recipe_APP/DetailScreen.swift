@@ -9,8 +9,56 @@
 import UIKit
 
 class DetailScreen: UIViewController {
-    private let tv = UITableView()
-    private let steparray = ["Veggie burgers have become a popular healthy alternative to meat based burgers. These days, grocery stores and restaurants are offering many options, that try to mimic a meat texture, to custom made black bean and veggie patties and more","Veggie burgers have become a popular healthy alternative to meat based burgers. These days, grocery stores and restaurants are offering many options, that try to mimic a meat texture, to custom made black bean and veggie patties and more","Veggie burgers have become a popular healthy alternative to meat based burgers. These days, grocery stores and restaurants are offering many options, that try to mimic a meat texture, to custom made black bean and veggie patties and more"]
+    private let mystep1:UILabel = {
+        let label = UILabel()
+        label.text = "Step 1"
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.numberOfLines = 3
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private let mystep1_data:UILabel = {
+        let label = UILabel()
+        label.text = "Veggie burgers have become a popular healthy alternative to meat based burgers. These days, grocery stores and restaurants are offering many options"
+        label.numberOfLines = 3
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private let mystep2:UILabel = {
+        let label = UILabel()
+        label.text = "Step 2"
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.numberOfLines = 3
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private let mystep2_data:UILabel = {
+        let label = UILabel()
+        label.text = "Veggie burgers have become a popular healthy alternative to meat based burgers. These days, grocery stores and restaurants are offering many options"
+        label.numberOfLines = 3
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private let mystep3:UILabel = {
+        let label = UILabel()
+        label.text = "Step 3"
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.numberOfLines = 3
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private let mystep3_data:UILabel = {
+        let label = UILabel()
+        label.text = "Veggie burgers have become a popular healthy alternative to meat based burgers. These days, grocery stores and restaurants are offering many options"
+        label.numberOfLines = 3
+        label.backgroundColor = .white
+        return label
+    }()
     
     private let title1:UILabel = {
         let lbl = UILabel()
@@ -33,29 +81,22 @@ class DetailScreen: UIViewController {
         super.viewDidLoad()
         view.addSubview(myimgview)
         view.addSubview(title1)
-        view.addSubview(tv)
-        tblViewSetup()
+        view.addSubview(mystep1)
+        view.addSubview(mystep2)
+        view.addSubview(mystep3)
+        view.addSubview(mystep1_data)
+        view.addSubview(mystep2_data)
+        view.addSubview(mystep3_data)
     }
     override func viewDidLayoutSubviews() {
         title1.frame = CGRect(x: 10, y: 50, width: 300, height: 50)
-        myimgview.frame = CGRect(x: 0, y: title1.bottom + 20, width: view.width, height: 200)
-        tv.frame = CGRect(x: 5, y: myimgview.bottom + 20, width: view.width - 20, height: 500)
+        myimgview.frame = CGRect(x: 0, y: title1.bottom + 15, width: view.width, height: 150)
+        mystep1.frame = CGRect(x: 5, y: myimgview.bottom + 10, width: view.width - 20, height: 30)
+        mystep1_data.frame = CGRect(x: 5, y: mystep1.bottom + 5, width: view.width - 20, height: 80)
+        mystep2.frame = CGRect(x: 5, y: mystep1_data.bottom + 5, width: view.width - 20, height: 30)
+        mystep2_data.frame = CGRect(x: 5, y: mystep2.bottom + 5, width: view.width - 20, height: 80)
+        mystep3.frame = CGRect(x: 5, y: mystep2_data.bottom + 5, width: view.width - 20, height: 30)
+        mystep3_data.frame = CGRect(x: 5, y: mystep3.bottom + 5, width: view.width - 20, height: 80)
     }
 }
-extension DetailScreen: UITableViewDataSource,UITableViewDelegate{
-    func tblViewSetup(){
-        tv.delegate = self
-        tv.dataSource = self
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "Content")
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return steparray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let contentcell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath)
-        contentcell.textLabel?.text = steparray[indexPath.row]
-        return contentcell
-    }
-    
-}
+
