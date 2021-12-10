@@ -10,6 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private let imgView : UIImageView = {
+        let imgview = UIImageView()
+        imgview.contentMode = .scaleAspectFill
+        imgview.image = UIImage(named: "bg_UI")
+        imgview.layer.cornerRadius = 50
+        imgview.backgroundColor = .red
+        imgview.clipsToBounds = true
+        return imgview
+    }()
+    
     private let myVIew : UIView = {
        let view = UIView()
         view.backgroundColor = .gray
