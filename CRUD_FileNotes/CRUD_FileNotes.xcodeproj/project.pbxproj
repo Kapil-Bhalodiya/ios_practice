@@ -7,24 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B15374B27646DAA00D95E75 /* ListFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B15374A27646DAA00D95E75 /* ListFile.swift */; };
 		0BBA2C47276372FB00A11E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA2C46276372FB00A11E4C /* AppDelegate.swift */; };
 		0BBA2C4C276372FB00A11E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BBA2C4A276372FB00A11E4C /* Main.storyboard */; };
 		0BBA2C4E2763730200A11E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBA2C4D2763730200A11E4C /* Assets.xcassets */; };
 		0BBA2C512763730200A11E4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BBA2C4F2763730200A11E4C /* LaunchScreen.storyboard */; };
-		0BBA2C592763733800A11E4C /* List_File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA2C582763733800A11E4C /* List_File.swift */; };
+		0BBA2C592763733800A11E4C /* ViewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA2C582763733800A11E4C /* ViewFile.swift */; };
 		0BBA2C5B276373EC00A11E4C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA2C5A276373EC00A11E4C /* Extension.swift */; };
 		0BBA2C5F2763765200A11E4C /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA2C5E2763765200A11E4C /* FileManagerService.swift */; };
 		0BBA2C612763779500A11E4C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA2C602763779500A11E4C /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B15374A27646DAA00D95E75 /* ListFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFile.swift; sourceTree = "<group>"; };
 		0BBA2C43276372FB00A11E4C /* CRUD_FileNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRUD_FileNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBA2C46276372FB00A11E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BBA2C4B276372FB00A11E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BBA2C4D2763730200A11E4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BBA2C502763730200A11E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BBA2C522763730200A11E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BBA2C582763733800A11E4C /* List_File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List_File.swift; sourceTree = "<group>"; };
+		0BBA2C582763733800A11E4C /* ViewFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFile.swift; sourceTree = "<group>"; };
 		0BBA2C5A276373EC00A11E4C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0BBA2C5E2763765200A11E4C /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		0BBA2C602763779500A11E4C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -65,10 +67,11 @@
 				0BBA2C4D2763730200A11E4C /* Assets.xcassets */,
 				0BBA2C4F2763730200A11E4C /* LaunchScreen.storyboard */,
 				0BBA2C522763730200A11E4C /* Info.plist */,
-				0BBA2C582763733800A11E4C /* List_File.swift */,
+				0BBA2C582763733800A11E4C /* ViewFile.swift */,
 				0BBA2C5A276373EC00A11E4C /* Extension.swift */,
 				0BBA2C5E2763765200A11E4C /* FileManagerService.swift */,
 				0BBA2C602763779500A11E4C /* LoginView.swift */,
+				0B15374A27646DAA00D95E75 /* ListFile.swift */,
 			);
 			path = CRUD_FileNotes;
 			sourceTree = "<group>";
@@ -145,7 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBA2C5F2763765200A11E4C /* FileManagerService.swift in Sources */,
-				0BBA2C592763733800A11E4C /* List_File.swift in Sources */,
+				0B15374B27646DAA00D95E75 /* ListFile.swift in Sources */,
+				0BBA2C592763733800A11E4C /* ViewFile.swift in Sources */,
 				0BBA2C47276372FB00A11E4C /* AppDelegate.swift in Sources */,
 				0BBA2C612763779500A11E4C /* LoginView.swift in Sources */,
 				0BBA2C5B276373EC00A11E4C /* Extension.swift in Sources */,

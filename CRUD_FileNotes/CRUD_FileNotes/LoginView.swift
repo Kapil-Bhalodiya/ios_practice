@@ -9,12 +9,13 @@
 import UIKit
 
 class LoginView: UIViewController {
-    private let uname = ""
-    private let password = ""
+    private let uname = "Admin"
+    private let password = "admin"
     
     private let mylbl:UILabel={
         let lbl = UILabel()
         lbl.text = "Login"
+        lbl.textColor = .orange
         lbl.font = UIFont.boldSystemFont(ofSize: 80)
         lbl.font = UIFont(name: "Arial", size: 40)
         return lbl
@@ -22,28 +23,32 @@ class LoginView: UIViewController {
     
     private let displaylbl:UILabel={
         let lbl = UILabel()
+        lbl.textColor = .white
         lbl.text = "Please Sign in to Continue...."
+        lbl.font = lbl.font.withSize(10)
         return lbl
     }()
     
     private let mytextemail:UITextField = {
         let txtemail = UITextField()
-        txtemail.placeholder = "Enter Your Email"
+        txtemail.attributedPlaceholder = NSAttributedString(
+            string: "Enter Your Email",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         txtemail.layer.shadowOpacity = 0.5
         txtemail.layer.shadowRadius = 4.0
         txtemail.layer.cornerRadius = 10
-        txtemail.backgroundColor = .white
         txtemail.textColor = .black
         return txtemail
     }()
     private let mytextpass:UITextField = {
         let txtpass = UITextField()
-        txtpass.placeholder = "Enter Your Password"
+        txtpass.attributedPlaceholder = NSAttributedString(
+            string: "**********",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         txtpass.isSecureTextEntry = true
-        txtpass.layer.shadowOpacity = 0.5
+        txtpass.layer.shadowOpacity = 1
         txtpass.layer.shadowRadius = 4.0
         txtpass.layer.cornerRadius = 10
-        txtpass.backgroundColor = .white
         txtpass.textColor = .black
         return txtpass
     }()
@@ -60,7 +65,7 @@ class LoginView: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"bg_receipt")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"bd_login")!)
         view.addSubview(mylbl)
         view.addSubview(mytextemail)
         view.addSubview(mytextpass)
@@ -71,26 +76,22 @@ class LoginView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         mylbl.frame = CGRect(x: 20, y: 90, width: view.width, height: 60)
-        displaylbl.frame = CGRect(x: 20, y: mylbl.bottom + 10, width: view.width-100, height: 20)
+        displaylbl.frame = CGRect(x: 20, y: mylbl.bottom + 10, width: view.width-150, height: 20)
         mytextemail.frame = CGRect(x: 20, y: displaylbl.bottom + 30, width: view.width-40, height: 40)
         mytextpass.frame = CGRect(x: 20, y: mytextemail.bottom+20, width: view.width-40, height: 40)
         mybutton.frame = CGRect(x: mytextpass.right - 80, y: mytextpass.bottom+30, width: view.width-300, height: 40)
-        
     }
     
     @objc func MoveToLogin(){
         if(mytextemail.text == uname && mytextpass.text == password){
+            UserDefaults.standard.setValue(mytextemail.text, forKey: "Email")
             print("OK")
-            let nav = List_File()
-            //nav.modalTransitionStyle = .fullScreen
+            let nav = ListFile()
             navigationController?.pushViewController(nav, animated: true)
-            //nav.setNavigationBarHidden(true, animated: false)
-            //present(dtv,animated: false)
-            //self.dismiss(animated: false, completion: nil)
         }else{
-            print("hey")
-            displaylbl.textColor = .red
-            displaylbl.text = "Invalid Username and Password...!"
+            let alert = UIAlertController.init(title: "Login Fail..", message: "Suceesfully Added..!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Incorrect Email or Password", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
