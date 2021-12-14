@@ -89,8 +89,8 @@ class LoginView: UIViewController {
             let nav = ListFile()
             navigationController?.pushViewController(nav, animated: true)
         }else{
-            let alert = UIAlertController.init(title: "Login Fail..", message: "Suceesfully Added..!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Incorrect Email or Password", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController.init(title: "Login Fail..", message: "Incorrect Email or Password..!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }

@@ -60,6 +60,7 @@ class ViewFile: UIViewController {
             let fetchContent = try String(contentsOf: filepath)
             FileName.text = fileget
             contentTextView.text = fetchContent
+            saavebutton.setTitle("Update", for: .normal)
             print(fetchContent)
         }catch{
             print(error)
