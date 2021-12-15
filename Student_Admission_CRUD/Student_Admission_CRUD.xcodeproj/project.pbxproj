@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B11AC62276A0D280050E575 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11AC61276A0D280050E575 /* Notice.swift */; };
+		0B11AC64276A172B0050E575 /* NoticeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11AC63276A172B0050E575 /* NoticeDB.swift */; };
 		0B25D5092768644600076D81 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D5082768644600076D81 /* RegisterVC.swift */; };
 		0B25D50B27688A7D00076D81 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50A27688A7D00076D81 /* Student.swift */; };
 		0B25D50D27688DA000076D81 /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50C27688DA000076D81 /* SQLiteHelper.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B11AC61276A0D280050E575 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		0B11AC63276A172B0050E575 /* NoticeDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDB.swift; sourceTree = "<group>"; };
 		0B25D5082768644600076D81 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		0B25D50A27688A7D00076D81 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		0B25D50C27688DA000076D81 /* SQLiteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				0B25D50A27688A7D00076D81 /* Student.swift */,
 				0B25D50C27688DA000076D81 /* SQLiteHelper.swift */,
 				0B25D50E2768A8F400076D81 /* AdminView.swift */,
+				0B11AC61276A0D280050E575 /* Notice.swift */,
+				0B11AC63276A172B0050E575 /* NoticeDB.swift */,
 			);
 			path = Student_Admission_CRUD;
 			sourceTree = "<group>";
@@ -156,6 +162,8 @@
 				0B9CE34E276754B9009A5F1E /* ViewController.swift in Sources */,
 				0B9CE34C276754B9009A5F1E /* AppDelegate.swift in Sources */,
 				0B9CE35E27675EF9009A5F1E /* LoginVC.swift in Sources */,
+				0B11AC64276A172B0050E575 /* NoticeDB.swift in Sources */,
+				0B11AC62276A0D280050E575 /* Notice.swift in Sources */,
 				0B25D50B27688A7D00076D81 /* Student.swift in Sources */,
 				0B9CE36027676E22009A5F1E /* Extension.swift in Sources */,
 				0B25D5092768644600076D81 /* RegisterVC.swift in Sources */,

@@ -14,7 +14,6 @@ class LoginVC: UIViewController {
         
         let email = UITextField()
         
-        
         email.layer.cornerRadius = 10
         email.placeholder = "Email ID"
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: email.height))
@@ -67,6 +66,16 @@ class LoginVC: UIViewController {
     }()
     
     @objc func loginClick(){
+        let spid = Int(txtEmail.text!)!
+        let pass = txtPass.text!
+        let uname = SQLiteHandler.sahred.checkAuth(for: spid, for: pass){
+            success in
+            if success {
+               print("uname")
+            }else{
+                print("not delete")
+            }
+        }
         let admin = AdminView()
         navigationController?.pushViewController(admin, animated: true)
     }
@@ -83,6 +92,7 @@ class LoginVC: UIViewController {
         view.addSubview(txtPass)
         view.addSubview(forgetpass)
         view.addSubview(loginbtn)
+        SQLiteHandler.sahred.openDatabase()
     }
     
     override func viewWillAppear(_ animated: Bool) {

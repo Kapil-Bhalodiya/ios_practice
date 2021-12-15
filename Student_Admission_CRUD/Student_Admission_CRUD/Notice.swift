@@ -8,23 +8,15 @@
 
 import UIKit
 
-class AdminView: UIViewController {
+class Notice: UIViewController {
     private let tblview = UITableView()
     private var studArray = [Student]()
     
-    private let tabbar:UITabBar = {
-        let tab = UITabBar()
-        //let item = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(Notice))
-        //let item2 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ClickAdd))
-        tab.items = [item]
-        return tab
-    }()
-    
     private let myToll : UIToolbar = {
         let tool = UIToolbar()
-          let item1 = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(Notice))
+        let item1 = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(Notice))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-      
+        
         let item3 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ClickAdd))
         tool.items = [item1,space,item3]
         return tool
@@ -35,7 +27,7 @@ class AdminView: UIViewController {
         title = "Admin"
         view.addSubview(tblview)
         view.addSubview(myToll)
-        view.addSubview(tabbar)
+        //view.addSubview(tabbar)
         view.backgroundColor = .white
         tblViewSetup()
     }
@@ -65,7 +57,7 @@ class AdminView: UIViewController {
     
     
 }
-extension AdminView:UITableViewDelegate,UITableViewDataSource {
+extension Notice:UITableViewDelegate,UITableViewDataSource {
     func tblViewSetup(){
         tblview.delegate = self
         tblview.dataSource = self
@@ -98,7 +90,7 @@ extension AdminView:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let id = studArray[indexPath.row].spid
-
+        
         SQLiteHandler.sahred.delete(for: id){
             success in
             if success {

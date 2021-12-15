@@ -42,6 +42,13 @@ class SQLiteHandler {
             dob DATE
         );
 
+        CREATE TABLE IF NOT EXISTS notice(
+            id PRIMARY KEY,
+            title TEXT,
+            desc TEXT,
+            div CHAR,
+            don DATE
+        );
         """
         
         var createTblStatement:OpaquePointer? = nil
@@ -63,6 +70,7 @@ class SQLiteHandler {
         //delete Satement
         sqlite3_finalize(createTblStatement)
     }
+    
     
     func insert(stud:Student, completion: @escaping ((Bool) -> Void)){
         let insStatementString = "INSERT INTO stud(spid,uname,gender,email,password,div,dob) VALUES(?,?,?,?,?,?,?);"
@@ -127,31 +135,32 @@ class SQLiteHandler {
     }
 //
 //
-//    func delete(for id:Int, completion: @escaping ((Bool) -> Void)){
-//        let delStatementString = "DELETE from emp WHERE id = ?;"
+    func delete(for spid:Int, completion: @escaping ((Bool) -> Void)){
+        let delStatementString = "DELETE from stud WHERE spid = ?;"
+
+        var delStatement:OpaquePointer? = nil
+
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, delStatementString, -1, &delStatement, nil) == SQLITE_OK {
+
+            sqlite3_bind_int(delStatement, 1, Int32(spid))
+
+            //Evalute Statement
+            if sqlite3_step(delStatement) == SQLITE_DONE {
+                print("Delete")
+                completion(true)
+            }else{
+                print("Not Delete")
+                completion(false)
+            }
+
+        }else{
+            print("del not Prepared")
+        }
+        sqlite3_finalize(delStatement)
+    }
 //
-//        var delStatement:OpaquePointer? = nil
-//
-//        //Prapare Statement
-//        if sqlite3_prepare_v2(db, delStatementString, -1, &delStatement, nil) == SQLITE_OK {
-//
-//            sqlite3_bind_int(delStatement, 1, Int32(id))
-//
-//            //Evalute Statement
-//            if sqlite3_step(delStatement) == SQLITE_DONE {
-//                print("Delete")
-//                completion(true)
-//            }else{
-//                print("Not Delete")
-//                completion(false)
-//            }
-//
-//        }else{
-//            print("del not Prepared")
-//        }
-//        sqlite3_finalize(delStatement)
-//    }
-//
+    
     func fetch() -> [Student] {
         let fetchStatementString = "SELECT * from stud;"
 
@@ -182,4 +191,37 @@ class SQLiteHandler {
         sqlite3_finalize(fetchStatement)
         return emp
     }
+    
+   //CheckAuth
+    
+    func checkAuth(for spid:Int,for password:String,completion: @escaping ((Bool) -> Void)) -> [String] {
+        let checkString = "SELECT uname from stud where spid = ? and password = ?;"
+        var checkStatement:OpaquePointer? = nil
+        var user = ""
+        
+        if sqlite3_prepare_v2(db, checkString, -1, &checkStatement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_int(checkStatement, 1, Int32(spid))
+            sqlite3_bind_text(checkStatement, 2, (password as NSString).utf8String, -1, nil)
+            //Evalute Statement
+            if sqlite3_step(checkStatement) == SQLITE_DONE {
+                user = String(cString: sqlite3_column_text(checkStatement, 1))
+                print(user)
+                print("Authenticate")
+                completion(true)
+            }else{
+                user = ""
+                print("Not Auth")
+                completion(false)
+            }
+            
+        }
+        return [user]
+    }
+
+    
+// Notice
+    
+    
+    
 }

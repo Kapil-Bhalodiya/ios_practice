@@ -16,7 +16,7 @@ class RegisterVC: UIViewController {
         let lbl = UILabel()
         lbl.text = "Add Student"
         lbl.textColor = #colorLiteral(red: 0.2680174036, green: 0.4543116004, blue: 0.136714408, alpha: 1)
-        lbl.font = UIFont.boldSystemFont(ofSize: 80)
+        lbl.font = UIFont.boldSystemFont(ofSize: 50)
         lbl.font = UIFont(name: "Arial", size: 40)
         lbl.textAlignment = .center
         return lbl
@@ -108,7 +108,7 @@ class RegisterVC: UIViewController {
     
     private let registerbtn:UIButton = {
         let btn = UIButton()
-        btn.setTitle("REGISTER", for: .normal)
+        btn.setTitle("ADD", for: .normal)
         btn.backgroundColor = #colorLiteral(red: 0.1769022816, green: 0.5545053433, blue: 0.07903720916, alpha: 1)
         btn.layer.cornerRadius = 10
         btn.addTarget(self, action: #selector(registerClick), for: .touchUpInside)
@@ -136,8 +136,8 @@ class RegisterVC: UIViewController {
             insert(stud: insStud)
         }
         
-        let login = LoginVC()
-        navigationController?.pushViewController(login, animated: true)
+//        let login = LoginVC()
+//        navigationController?.pushViewController(login, animated: true)
     }
     
     private func insert(stud:Student){
