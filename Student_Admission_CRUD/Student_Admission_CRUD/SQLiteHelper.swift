@@ -41,14 +41,6 @@ class SQLiteHandler {
             div CHAR,
             dob DATE
         );
-
-        CREATE TABLE IF NOT EXISTS notice(
-            id PRIMARY KEY,
-            title TEXT,
-            desc TEXT,
-            div CHAR,
-            don DATE
-        );
         """
         
         var createTblStatement:OpaquePointer? = nil
@@ -69,6 +61,34 @@ class SQLiteHandler {
         
         //delete Satement
         sqlite3_finalize(createTblStatement)
+        
+         let createTblStringnote = """
+        
+            CREATE TABLE IF NOT EXISTS notice(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            desc TEXT,
+            div CHAR,
+            don String
+            );
+        """
+        
+        var createTblStatementnote:OpaquePointer? = nil
+        
+        
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, createTblStringnote, -1, &createTblStatementnote, nil) == SQLITE_OK {
+            
+            //Evalute Statement
+            if sqlite3_step(createTblStatement) == SQLITE_DONE {
+                print("note Tbl Created")
+            }else{
+                print("note Not created")
+            }
+        }else{
+            print("note Tbl not Prepared")
+        }
+        
     }
     
     
@@ -222,6 +242,61 @@ class SQLiteHandler {
     
 // Notice
     
+    func insertNote(note:NoticeDB, completion: @escaping ((Bool) -> Void)){
+        let insStatementString = "INSERT INTO notice(title,desc,div,don) VALUES(?,?,?,?);"
+        
+        var insStatement:OpaquePointer? = nil
+        
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, insStatementString, -1, &insStatement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_text(insStatement, 1, (note.title as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insStatement, 2, (note.desc as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insStatement, 3, (note.div as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insStatement, 4, (note.don as NSString).utf8String, -1, nil)
+            //Evalute Statement
+            if sqlite3_step(insStatement) == SQLITE_DONE {
+                print("Note inserted")
+                completion(true)
+            }else{
+                print("Note Not inserted")
+                completion(false)
+            }
+            
+        }else{
+            print("Ins Note not Prepared")
+        }
+        sqlite3_finalize(insStatement)
+    }
     
+    
+    func fetchNote() -> [NoticeDB] {
+        let fetchStatementString = "SELECT * from notice;"
+        
+        var fetchStatement:OpaquePointer? = nil
+        
+        var note = [NoticeDB]()
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, fetchStatementString, -1, &fetchStatement, nil) == SQLITE_OK {
+            
+            //Evalute Statement
+            while sqlite3_step(fetchStatement) == SQLITE_ROW {
+                let id = Int(sqlite3_column_int(fetchStatement, 0))
+                let title = String(cString: sqlite3_column_text(fetchStatement, 1))
+                let desc = String(cString: sqlite3_column_text(fetchStatement, 2))
+                let div = String(cString: sqlite3_column_text(fetchStatement, 3))
+                let don = String(cString: sqlite3_column_text(fetchStatement, 4))
+                
+                note.append(NoticeDB(id: id, title: title, desc: desc, div: div, don: don))
+                print("get")
+            }
+        }
+        else
+        {
+            print("Not get")
+        }
+        sqlite3_finalize(fetchStatement)
+        return note
+    }
     
 }

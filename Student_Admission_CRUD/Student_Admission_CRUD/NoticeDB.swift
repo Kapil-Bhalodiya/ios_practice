@@ -13,18 +13,14 @@ class NoticeDB {
     var title : String = ""
     var desc : String = ""
     var div : String = ""
-    var dob : Date
+    var don : String = ""
     
     
-    init(id) {
-        <#statements#>
-    } {
-        self.spid = spid
-        self.uname = uname
-        self.gender = gender
-        self.email = email
-        self.password = password
+    init(id:Int,title:String,desc:String,div:String,don:String) {
+        self.id = id
+        self.title = title
+        self.desc = desc
         self.div = div
-        self.dob = dob
+        self.don = don
     }
 }

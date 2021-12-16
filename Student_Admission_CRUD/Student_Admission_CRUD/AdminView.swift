@@ -12,21 +12,21 @@ class AdminView: UIViewController {
     private let tblview = UITableView()
     private var studArray = [Student]()
     
-    private let tabbar:UITabBar = {
-        let tab = UITabBar()
-        //let item = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(Notice))
-        //let item2 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ClickAdd))
-        tab.items = [item]
-        return tab
+    private let noticeBtn : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Get Started", for: .normal)
+        btn.backgroundColor = .blue
+        btn.addTarget(self, action: #selector(noticeClick), for: .touchUpInside)
+        btn.layer.cornerRadius = 30
+        return btn
     }()
     
     private let myToll : UIToolbar = {
         let tool = UIToolbar()
-          let item1 = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(Notice))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
       
         let item3 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ClickAdd))
-        tool.items = [item1,space,item3]
+        tool.items = [space,item3]
         return tool
     }()
     
@@ -35,7 +35,7 @@ class AdminView: UIViewController {
         title = "Admin"
         view.addSubview(tblview)
         view.addSubview(myToll)
-        view.addSubview(tabbar)
+        view.addSubview(noticeBtn)
         view.backgroundColor = .white
         tblViewSetup()
     }
@@ -44,6 +44,7 @@ class AdminView: UIViewController {
         super.viewDidLayoutSubviews()
         let toolBarHeight : CGFloat = view.safeAreaInsets.top + 10.0
         myToll.frame = CGRect(x: 0, y: 20, width: view.width, height: toolBarHeight)
+        noticeBtn.frame = CGRect(x: 50, y: myToll.bottom + 60, width: view.width - 100, height: 40)
         tblview.frame = CGRect(x: 0, y: myToll.bottom + 10, width: view.frame.width, height: view.frame.height)
     }
     
@@ -53,9 +54,10 @@ class AdminView: UIViewController {
         tblview.reloadData()
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    @objc func Notice(){
-        let Home = LoginVC()
-        navigationController?.pushViewController(Home, animated: true)
+    
+    @objc func noticeClick(){
+        let noticevc = Notice()
+        navigationController?.pushViewController(noticevc, animated: true)
     }
     
     @objc func ClickAdd(){

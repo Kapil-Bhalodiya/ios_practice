@@ -66,16 +66,16 @@ class LoginVC: UIViewController {
     }()
     
     @objc func loginClick(){
-        let spid = Int(txtEmail.text!)!
-        let pass = txtPass.text!
-        let uname = SQLiteHandler.sahred.checkAuth(for: spid, for: pass){
-            success in
-            if success {
-               print("uname")
-            }else{
-                print("not delete")
-            }
-        }
+//        let spid = Int(txtEmail.text!)!
+//        let pass = txtPass.text!
+//        let uname = SQLiteHandler.sahred.checkAuth(for: spid, for: pass){
+//            success in
+//            if success {
+//               print("uname")
+//            }else{
+//                print("not delete")
+//            }
+//        }
         let admin = AdminView()
         navigationController?.pushViewController(admin, animated: true)
     }

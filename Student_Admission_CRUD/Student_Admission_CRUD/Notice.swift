@@ -10,15 +10,14 @@ import UIKit
 
 class Notice: UIViewController {
     private let tblview = UITableView()
-    private var studArray = [Student]()
+    private var noticeArray = [NoticeDB]()
     
     private let myToll : UIToolbar = {
         let tool = UIToolbar()
-        let item1 = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(Notice))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
         let item3 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ClickAdd))
-        tool.items = [item1,space,item3]
+        tool.items = [space,item3]
         return tool
     }()
     
@@ -27,7 +26,6 @@ class Notice: UIViewController {
         title = "Admin"
         view.addSubview(tblview)
         view.addSubview(myToll)
-        //view.addSubview(tabbar)
         view.backgroundColor = .white
         tblViewSetup()
     }
@@ -41,17 +39,18 @@ class Notice: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        studArray = SQLiteHandler.sahred.fetch()
+        noticeArray = SQLiteHandler.sahred.fetchNote()
         tblview.reloadData()
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    @objc func Notice(){
-        let Home = LoginVC()
-        navigationController?.pushViewController(Home, animated: true)
+    
+    @objc func noticeClick(){
+        let noticevc = Notice()
+        navigationController?.pushViewController(noticevc, animated: true)
     }
     
     @objc func ClickAdd(){
-        let register = RegisterVC()
+        let register = AddNotice()
         navigationController?.pushViewController(register, animated: true)
     }
     
@@ -61,17 +60,17 @@ extension Notice:UITableViewDelegate,UITableViewDataSource {
     func tblViewSetup(){
         tblview.delegate = self
         tblview.dataSource = self
-        tblview.register(UITableViewCell.self, forCellReuseIdentifier: "NameCell")
+        tblview.register(UITableViewCell.self, forCellReuseIdentifier: "NoteCell")
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studArray.count
+        return noticeArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath)
-        let stud = studArray[indexPath.row]
-        cell.textLabel?.text = "\(stud.spid) \t | \t \(stud.uname) \t | \t \(stud.gender) | \t \(stud.email) | \t \(stud.div) | \t \(stud.dob)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
+        let note = noticeArray[indexPath.row]
+        cell.textLabel?.text = "\(note.title) | \t  \(note.div)"
         return cell
     }
     
@@ -82,23 +81,23 @@ extension Notice:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //UserDefaults.standard.setValue(empArray[indexPath.row], forKey: "listname")
-        let add = RegisterVC()
-        add.student = studArray[indexPath.row]
+        let add = AddNotice()
+        add.notice = noticeArray[indexPath.row]
         navigationController?.pushViewController(add, animated: true)
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let id = studArray[indexPath.row].spid
+        let id = noticeArray[indexPath.row].id
         
         SQLiteHandler.sahred.delete(for: id){
             success in
             if success {
                 print(id)
-                self.studArray.remove(at: indexPath.row)
+                self.noticeArray.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }else{
-                print("not delete")
+                print("note not delete")
             }
         }
     }

@@ -13,6 +13,7 @@
 		0B25D50B27688A7D00076D81 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50A27688A7D00076D81 /* Student.swift */; };
 		0B25D50D27688DA000076D81 /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50C27688DA000076D81 /* SQLiteHelper.swift */; };
 		0B25D50F2768A8F400076D81 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50E2768A8F400076D81 /* AdminView.swift */; };
+		0B28823D276B4FA700CCC200 /* AddNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28823C276B4FA700CCC200 /* AddNotice.swift */; };
 		0B9CE34C276754B9009A5F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE34B276754B9009A5F1E /* AppDelegate.swift */; };
 		0B9CE34E276754B9009A5F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE34D276754B9009A5F1E /* ViewController.swift */; };
 		0B9CE351276754B9009A5F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CE34F276754B9009A5F1E /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		0B25D50A27688A7D00076D81 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		0B25D50C27688DA000076D81 /* SQLiteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
 		0B25D50E2768A8F400076D81 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
+		0B28823C276B4FA700CCC200 /* AddNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotice.swift; sourceTree = "<group>"; };
 		0B9CE348276754B9009A5F1E /* Student_Admission_CRUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Student_Admission_CRUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9CE34B276754B9009A5F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B9CE34D276754B9009A5F1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				0B25D50E2768A8F400076D81 /* AdminView.swift */,
 				0B11AC61276A0D280050E575 /* Notice.swift */,
 				0B11AC63276A172B0050E575 /* NoticeDB.swift */,
+				0B28823C276B4FA700CCC200 /* AddNotice.swift */,
 			);
 			path = Student_Admission_CRUD;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				0B25D50B27688A7D00076D81 /* Student.swift in Sources */,
 				0B9CE36027676E22009A5F1E /* Extension.swift in Sources */,
 				0B25D5092768644600076D81 /* RegisterVC.swift in Sources */,
+				0B28823D276B4FA700CCC200 /* AddNotice.swift in Sources */,
 				0B25D50F2768A8F400076D81 /* AdminView.swift in Sources */,
 				0B25D50D27688DA000076D81 /* SQLiteHelper.swift in Sources */,
 			);
