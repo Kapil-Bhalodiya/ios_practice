@@ -56,7 +56,7 @@ class AddNotice: UIViewController {
         sc.insertSegment(withTitle: "A", at: 0, animated: true)
         sc.insertSegment(withTitle: "B", at: 1, animated: true)
         sc.insertSegment(withTitle: "C", at: 2, animated: true)
-         sc.insertSegment(withTitle: "ALL", at: 3, animated: true)
+        sc.insertSegment(withTitle: "ALL", at: 3, animated: true)
         sc.selectedSegmentIndex = 3
         sc.backgroundColor = #colorLiteral(red: 0.2721412224, green: 0.4613018135, blue: 0.1388179484, alpha: 1)
         sc.tintColor = .white
@@ -93,10 +93,8 @@ private let registerbtn:UIButton = {
     
     if let note = notice {
         let upNote = NoticeDB(id: note.id, title: title, desc: desc, div: div, don: don)
+        updatenotice(note: upNote)
         
-        //let UpStud = Student(spid: stud.spid, uname: uname, gender: gen, email: email, password: password, div: div, dob: sdate)
-        //let Upnote = NoticeDB(id: note.id, title: title, desc: desc, div: div, don: don)
-        //update(note: Upnote)
     }else{
         let insNote = NoticeDB(id: 0, title: title, desc: desc, div: div, don: don)
         insertnotice(note: insNote)
@@ -117,16 +115,16 @@ private func insertnotice(note:NoticeDB){
     }
 }
 
-//private func update(stud:Student){
-//    SQLiteHandler.sahred.update(stud: stud){
-//        success in
-//        if success {
-//            print("Update")
-//        }else{
-//            print("not update")
-//        }
-//    }
-//}
+private func updatenotice(note:NoticeDB){
+    SQLiteHandler.sahred.updateNote(note: note){
+        success in
+        if success {
+            print("Update Note")
+        }else{
+            print("Note not update")
+        }
+    }
+}
 
 override func viewDidLoad() {
     super.viewDidLoad()
@@ -143,6 +141,8 @@ override func viewDidLoad() {
         titleText.text = note.title
         contentText.text = note.desc
         division.setTitle(note.div, forSegmentAt: division.selectedSegmentIndex)
+//        let notedate = note.don
+//        DatePicker.date = note.don)
     }
 }
 
@@ -157,7 +157,7 @@ override func viewDidLayoutSubviews() {
     headlbl.frame = CGRect(x: 50, y: 60, width: view.width - 100, height: 50)
     titleText.frame = CGRect(x: 50, y: headlbl.bottom + 30, width: view.width - 100, height: 50)
     contentText.frame = CGRect(x: 50, y: titleText.bottom + 20, width: view.width - 100, height: 150)
-     division.frame = CGRect(x: 60, y: contentText.bottom + 20, width: view.width - 120, height: 40)
+    division.frame = CGRect(x: 60, y: contentText.bottom + 20, width: view.width - 120, height: 40)
     DatePicker.frame = CGRect(x: 60, y: division.bottom + 20, width: view.width - 120, height: 40)
     registerbtn.frame = CGRect(x: 60, y: DatePicker.bottom + 50, width: view.width - 120, height: 40)
     

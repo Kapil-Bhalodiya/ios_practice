@@ -18,10 +18,11 @@ class LoginVC: UIViewController {
         email.placeholder = "Email ID"
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: email.height))
         email.leftViewMode = .always
-        email.layer.shadowColor = #colorLiteral(red: 0.2680937266, green: 0.5423540228, blue: 0.1122479198, alpha: 1)
-        email.layer.shadowOpacity = 0.5
+        email.layer.shadowOffset = CGSize(width: 3, height: 3)
+        email.layer.shadowOpacity = 1.0
         email.layer.shadowRadius = 4.0
-        email.layer.borderWidth = 1.0
+        email.layer.borderWidth = 0.5
+        email.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         let img = UIImageView(frame: CGRect(x: 2, y: 2, width: 40, height: 20))
         img.contentMode = .scaleAspectFit
         img.image = #imageLiteral(resourceName: "email-icon")
@@ -33,13 +34,16 @@ class LoginVC: UIViewController {
     private let txtPass:UITextField = {
         let password = UITextField()
         password.layer.cornerRadius = 10
+        password.textColor = .black
         password.placeholder = "Password"
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: password.height))
         password.leftViewMode = .always
-        password.layer.shadowColor = #colorLiteral(red: 0.3197782056, green: 0.5420504282, blue: 0.1631173479, alpha: 1)
-        password.layer.shadowOpacity = 0.7
-        password.layer.shadowRadius = 2.0
-        password.layer.borderWidth = 1.0
+        password.layer.shadowColor = UIColor.gray.cgColor
+        password.layer.shadowOffset = CGSize(width: 3, height: 3)
+        password.layer.shadowOpacity = 1.0
+        password.layer.shadowRadius = 4.0
+        password.layer.borderWidth = 0.5
+        password.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         let img = UIImageView(frame: CGRect(x: 2, y: 2, width: 40, height: 20))
         img.contentMode = .scaleAspectFit
         img.image = #imageLiteral(resourceName: "password-icon")
@@ -76,7 +80,7 @@ class LoginVC: UIViewController {
 //                print("not delete")
 //            }
 //        }
-        let admin = AdminView()
+        let admin = StudentView()
         navigationController?.pushViewController(admin, animated: true)
     }
     

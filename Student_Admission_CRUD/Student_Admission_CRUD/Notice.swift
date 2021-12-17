@@ -1,10 +1,3 @@
-//
-//  AdminView.swift
-//  Student_Admission_CRUD
-//
-//  Created by DCS on 14/12/21.
-//  Copyright © 2021 DCS. All rights reserved.
-//
 
 import UIKit
 
@@ -90,7 +83,7 @@ extension Notice:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let id = noticeArray[indexPath.row].id
         
-        SQLiteHandler.sahred.delete(for: id){
+        SQLiteHandler.sahred.deleteNote(for: id){
             success in
             if success {
                 print(id)

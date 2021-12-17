@@ -269,6 +269,37 @@ class SQLiteHandler {
         sqlite3_finalize(insStatement)
     }
     
+    //update notice
+    
+    func updateNote(note:NoticeDB, completion: @escaping ((Bool) -> Void)){
+        let insStatementString = "UPDATE notice set title = ?,desc = ?,div = ?,don = ? where id=?;"
+        
+        var insStatement:OpaquePointer? = nil
+        
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, insStatementString, -1, &insStatement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_text(insStatement, 1, (note.title as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insStatement, 2, (note.desc as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insStatement, 3, (note.div as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insStatement, 4, (note.don as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(insStatement, 5, Int32(note.id))
+            //Evalute Statement
+            if sqlite3_step(insStatement) == SQLITE_DONE {
+                print("Note Updated")
+                completion(true)
+            }else{
+                print("Note Not Updated")
+                completion(false)
+            }
+            
+        }else{
+            print("UP Note not Prepared")
+        }
+        sqlite3_finalize(insStatement)
+    }
+    
+    //fetch notes
     
     func fetchNote() -> [NoticeDB] {
         let fetchStatementString = "SELECT * from notice;"
@@ -294,6 +325,65 @@ class SQLiteHandler {
         else
         {
             print("Not get")
+        }
+        sqlite3_finalize(fetchStatement)
+        return note
+    }
+    
+    //delte noitice
+    func deleteNote(for spid:Int, completion: @escaping ((Bool) -> Void)){
+        let delStatementString = "DELETE from notice WHERE id = ?;"
+        
+        var delStatement:OpaquePointer? = nil
+        
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, delStatementString, -1, &delStatement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_int(delStatement, 1, Int32(spid))
+            
+            //Evalute Statement
+            if sqlite3_step(delStatement) == SQLITE_DONE {
+                print("Delete")
+                completion(true)
+            }else{
+                print("Not Delete")
+                completion(false)
+            }
+            
+        }else{
+            print("del not Prepared")
+        }
+        sqlite3_finalize(delStatement)
+    }
+    
+    
+    //get notice
+    
+    func fetchStud() -> [NoticeDB] {
+        let fetchStatementString = "SELECT * FROM notice WHERE div='A';"
+        
+        var fetchStatement:OpaquePointer? = nil
+        
+        var note = [NoticeDB]()
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, fetchStatementString, -1, &fetchStatement, nil) == SQLITE_OK {
+            
+            //sqlite3_bind_text(fetchStatement, 1, "A", -1, nil)
+            //Evalute Statement
+            while sqlite3_step(fetchStatement) == SQLITE_ROW {
+                let id = Int(sqlite3_column_int(fetchStatement, 0))
+                let title = String(cString: sqlite3_column_text(fetchStatement, 1))
+                let desc = String(cString: sqlite3_column_text(fetchStatement, 2))
+                let div = String(cString: sqlite3_column_text(fetchStatement, 3))
+                let don = String(cString: sqlite3_column_text(fetchStatement, 4))
+                
+                note.append(NoticeDB(id: id, title: title, desc: desc, div: div, don: don))
+                print("get division ")
+            }
+        }
+        else
+        {
+            print("Not get dividion")
         }
         sqlite3_finalize(fetchStatement)
         return note
