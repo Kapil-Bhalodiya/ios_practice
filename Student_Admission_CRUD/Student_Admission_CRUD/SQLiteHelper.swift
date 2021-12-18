@@ -389,4 +389,36 @@ class SQLiteHandler {
         return note
     }
     
+    
+    func fetchDetail() -> [Student] {
+        let fetchStatementString = "SELECT * from stud WHERE SPID=20211;"
+        
+        var fetchStatement:OpaquePointer? = nil
+        
+        var detail = [Student]()
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, fetchStatementString, -1, &fetchStatement, nil) == SQLITE_OK {
+            
+            //Evalute Statement
+            while sqlite3_step(fetchStatement) == SQLITE_ROW {
+                let spid = Int(sqlite3_column_int(fetchStatement, 0))
+                let uname = String(cString: sqlite3_column_text(fetchStatement, 1))
+                let gender = String(cString: sqlite3_column_text(fetchStatement, 2))
+                let email = String(cString: sqlite3_column_text(fetchStatement, 3))
+                let password = String(cString: sqlite3_column_text(fetchStatement, 4))
+                let div = String(cString: sqlite3_column_text(fetchStatement, 5))
+                let dob = Date(timeIntervalSinceReferenceDate:sqlite3_column_double(fetchStatement, 6))
+                
+                detail.append(Student(spid: spid, uname: uname, gender: gender, email: email, password: password, div: div, dob: dob))
+                print("get")
+            }
+        }
+        else
+        {
+            print("Not get")
+        }
+        sqlite3_finalize(fetchStatement)
+        return detail
+    }
+    
 }

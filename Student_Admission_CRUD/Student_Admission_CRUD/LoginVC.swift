@@ -80,14 +80,14 @@ class LoginVC: UIViewController {
 //                print("not delete")
 //            }
 //        }
-        let admin = StudentView()
-        navigationController?.pushViewController(admin, animated: true)
-    }
-    
-    @objc func registerClick(){
-        print("hey")
-        let reg = RegisterVC()
-        navigationController?.pushViewController(reg, animated: true)
+        if txtEmail.text == "A" && txtPass.text == "" {
+            let Stud = StudentView()
+            navigationController?.pushViewController(Stud, animated: true)
+        }else{
+            let admin = AdminView()
+            navigationController?.pushViewController(admin, animated: true)
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -112,5 +112,4 @@ class LoginVC: UIViewController {
         forgetpass.frame = CGRect(x: 165, y: txtPass.bottom+10, width: view.width - 20, height: 20)
         loginbtn.frame = CGRect(x: 120, y: forgetpass.bottom + 50, width: view.width - 240, height: 40)
     }
-    
 }

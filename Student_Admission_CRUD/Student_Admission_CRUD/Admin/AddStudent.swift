@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterVC: UIViewController {
+class AddStudent: UIViewController {
 
     var student : Student?
     

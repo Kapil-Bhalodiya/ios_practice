@@ -13,7 +13,6 @@ class CollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = ""
         label.shadowColor = .gray
-        label.textAlignment = .center
         label.textColor = .black
         return label
     }()
@@ -21,7 +20,6 @@ class CollectionViewCell: UICollectionViewCell {
     private let myDate:UILabel = {
         let label = UILabel()
         label.text = ""
-        label.textAlignment = .center
         label.textColor = .gray
         return label
     }()
@@ -30,8 +28,8 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.addSubview(mytitle)
         contentView.addSubview(myDate)
         mytitle.text = "\(status.title)"
-        mytitle.frame = CGRect(x: 5, y: 10, width: 100, height: 20)
+        mytitle.frame = CGRect(x: 20, y: 15, width: 100, height: 20)
         myDate.text = "\(status.don)"
-        myDate.frame = CGRect(x: 15, y: mytitle.bottom + 5, width: 100, height: 20)
+        myDate.frame = CGRect(x: 20, y: mytitle.bottom + 5, width: 100, height: 20)
     }
 }

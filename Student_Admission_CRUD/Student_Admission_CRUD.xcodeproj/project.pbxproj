@@ -7,18 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B11AC62276A0D280050E575 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11AC61276A0D280050E575 /* Notice.swift */; };
 		0B11AC64276A172B0050E575 /* NoticeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11AC63276A172B0050E575 /* NoticeDB.swift */; };
 		0B14E39F276C82F7001AAE5B /* StudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B14E39E276C82F7001AAE5B /* StudentView.swift */; };
 		0B14E3A1276C8794001AAE5B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B14E3A0276C8794001AAE5B /* CollectionViewCell.swift */; };
 		0B14E3A3276C9E2E001AAE5B /* StudentNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B14E3A2276C9E2E001AAE5B /* StudentNoticeView.swift */; };
-		0B25D5092768644600076D81 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D5082768644600076D81 /* RegisterVC.swift */; };
+		0B25D5092768644600076D81 /* AddStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D5082768644600076D81 /* AddStudent.swift */; };
 		0B25D50B27688A7D00076D81 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50A27688A7D00076D81 /* Student.swift */; };
 		0B25D50D27688DA000076D81 /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50C27688DA000076D81 /* SQLiteHelper.swift */; };
 		0B25D50F2768A8F400076D81 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25D50E2768A8F400076D81 /* AdminView.swift */; };
 		0B28823D276B4FA700CCC200 /* AddNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28823C276B4FA700CCC200 /* AddNotice.swift */; };
+		0B34B2BB276DED43003EFAE2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B34B2BA276DED43003EFAE2 /* DetailView.swift */; };
 		0B9CE34C276754B9009A5F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE34B276754B9009A5F1E /* AppDelegate.swift */; };
-		0B9CE34E276754B9009A5F1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE34D276754B9009A5F1E /* ViewController.swift */; };
 		0B9CE351276754B9009A5F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CE34F276754B9009A5F1E /* Main.storyboard */; };
 		0B9CE353276754BB009A5F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CE352276754BB009A5F1E /* Assets.xcassets */; };
 		0B9CE356276754BB009A5F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CE354276754BB009A5F1E /* LaunchScreen.storyboard */; };
@@ -27,19 +26,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B11AC61276A0D280050E575 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		0B11AC63276A172B0050E575 /* NoticeDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDB.swift; sourceTree = "<group>"; };
 		0B14E39E276C82F7001AAE5B /* StudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentView.swift; sourceTree = "<group>"; };
 		0B14E3A0276C8794001AAE5B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0B14E3A2276C9E2E001AAE5B /* StudentNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentNoticeView.swift; sourceTree = "<group>"; };
-		0B25D5082768644600076D81 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		0B25D5082768644600076D81 /* AddStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudent.swift; sourceTree = "<group>"; };
 		0B25D50A27688A7D00076D81 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		0B25D50C27688DA000076D81 /* SQLiteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
 		0B25D50E2768A8F400076D81 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		0B28823C276B4FA700CCC200 /* AddNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotice.swift; sourceTree = "<group>"; };
+		0B34B2BA276DED43003EFAE2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0B9CE348276754B9009A5F1E /* Student_Admission_CRUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Student_Admission_CRUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9CE34B276754B9009A5F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0B9CE34D276754B9009A5F1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B9CE350276754B9009A5F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B9CE352276754BB009A5F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B9CE355276754BB009A5F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +57,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B1CA529276D9FBA00796E74 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				0B14E39E276C82F7001AAE5B /* StudentView.swift */,
+				0B14E3A0276C8794001AAE5B /* CollectionViewCell.swift */,
+				0B25D50A27688A7D00076D81 /* Student.swift */,
+				0B14E3A2276C9E2E001AAE5B /* StudentNoticeView.swift */,
+				0B34B2BA276DED43003EFAE2 /* DetailView.swift */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		0B1CA52A276DA00000796E74 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				0B25D5082768644600076D81 /* AddStudent.swift */,
+				0B11AC63276A172B0050E575 /* NoticeDB.swift */,
+				0B25D50E2768A8F400076D81 /* AdminView.swift */,
+				0B28823C276B4FA700CCC200 /* AddNotice.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
 		0B9CE33F276754B9009A5F1E = {
 			isa = PBXGroup;
 			children = (
@@ -78,24 +99,16 @@
 		0B9CE34A276754B9009A5F1E /* Student_Admission_CRUD */ = {
 			isa = PBXGroup;
 			children = (
+				0B1CA52A276DA00000796E74 /* Admin */,
+				0B1CA529276D9FBA00796E74 /* Student */,
 				0B9CE34B276754B9009A5F1E /* AppDelegate.swift */,
-				0B9CE34D276754B9009A5F1E /* ViewController.swift */,
 				0B9CE34F276754B9009A5F1E /* Main.storyboard */,
 				0B9CE352276754BB009A5F1E /* Assets.xcassets */,
 				0B9CE354276754BB009A5F1E /* LaunchScreen.storyboard */,
 				0B9CE357276754BB009A5F1E /* Info.plist */,
 				0B9CE35D27675EF9009A5F1E /* LoginVC.swift */,
 				0B9CE35F27676E22009A5F1E /* Extension.swift */,
-				0B25D5082768644600076D81 /* RegisterVC.swift */,
-				0B25D50A27688A7D00076D81 /* Student.swift */,
 				0B25D50C27688DA000076D81 /* SQLiteHelper.swift */,
-				0B25D50E2768A8F400076D81 /* AdminView.swift */,
-				0B11AC61276A0D280050E575 /* Notice.swift */,
-				0B11AC63276A172B0050E575 /* NoticeDB.swift */,
-				0B28823C276B4FA700CCC200 /* AddNotice.swift */,
-				0B14E39E276C82F7001AAE5B /* StudentView.swift */,
-				0B14E3A0276C8794001AAE5B /* CollectionViewCell.swift */,
-				0B14E3A2276C9E2E001AAE5B /* StudentNoticeView.swift */,
 			);
 			path = Student_Admission_CRUD;
 			sourceTree = "<group>";
@@ -171,15 +184,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B9CE34E276754B9009A5F1E /* ViewController.swift in Sources */,
 				0B9CE34C276754B9009A5F1E /* AppDelegate.swift in Sources */,
 				0B14E3A3276C9E2E001AAE5B /* StudentNoticeView.swift in Sources */,
 				0B9CE35E27675EF9009A5F1E /* LoginVC.swift in Sources */,
+				0B34B2BB276DED43003EFAE2 /* DetailView.swift in Sources */,
 				0B11AC64276A172B0050E575 /* NoticeDB.swift in Sources */,
-				0B11AC62276A0D280050E575 /* Notice.swift in Sources */,
 				0B25D50B27688A7D00076D81 /* Student.swift in Sources */,
 				0B9CE36027676E22009A5F1E /* Extension.swift in Sources */,
-				0B25D5092768644600076D81 /* RegisterVC.swift in Sources */,
+				0B25D5092768644600076D81 /* AddStudent.swift in Sources */,
 				0B14E3A1276C8794001AAE5B /* CollectionViewCell.swift in Sources */,
 				0B28823D276B4FA700CCC200 /* AddNotice.swift in Sources */,
 				0B25D50F2768A8F400076D81 /* AdminView.swift in Sources */,

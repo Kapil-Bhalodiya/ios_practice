@@ -11,6 +11,14 @@ import UIKit
 class StudentView: UIViewController {
     
     private var notesArray = [NoticeDB]()
+    
+    private let tabbar:UITabBar = {
+        let tool = UITabBar()
+        let item1 = UITabBarItem(title: "info", image: #imageLiteral(resourceName: "info"), tag: 1)
+        tool.tintColor = #colorLiteral(red: 0.01183097247, green: 0.4718669041, blue: 0, alpha: 1)
+        tool.items = [item1]
+        return tool
+    }()
 
     private let titleLabel:UILabel = {
         let label = UILabel()
@@ -52,8 +60,10 @@ class StudentView: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(nameLabel)
         view.addSubview(logoutbtn)
+        view.addSubview(tabbar)
         notesArray = SQLiteHandler.sahred.fetchStud()
         setData()
+        tabbar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +77,17 @@ class StudentView: UIViewController {
         titleLabel.frame = CGRect(x: 20, y: 50, width: 150, height: 30)
         nameLabel.frame = CGRect(x: 20, y: titleLabel.bottom + 10, width: 150, height: 30)
         logoutbtn.frame = CGRect(x: 250, y: 50, width: 150, height: 40)
+        let tabbarheight:CGFloat=view.safeAreaInsets.bottom + 70.0
+        tabbar.frame = CGRect(x : 0,y : view.height - tabbarheight,width : view.width ,height : tabbarheight )
     }
     
     @objc func logoutclicked(){
         let logout = LoginVC()
         navigationController?.pushViewController(logout, animated: true)
+    }
+    
+    @objc func ClickInfo(){
+        
     }
 }
 extension StudentView: UICollectionViewDelegate,UICollectionViewDataSource {
@@ -103,5 +119,13 @@ extension StudentView: UICollectionViewDelegate,UICollectionViewDataSource {
         let seeNote = StudentNoticeView()
         seeNote.seenotice = notesArray[indexPath.row]
         navigationController?.pushViewController(seeNote, animated: true)
+    }
+}
+extension StudentView : UITabBarDelegate {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item.title == "info" {
+            let ds = DetailView()
+            navigationController?.pushViewController(ds, animated: true)
+        }
     }
 }
