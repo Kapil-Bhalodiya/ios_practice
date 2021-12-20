@@ -125,7 +125,10 @@ class AddStudent: UIViewController {
         let password = regPass.text!
         let div = division.titleForSegment(at: division.selectedSegmentIndex)!
     
-        let sdate = DatePicker.date
+        let cal = Calendar.current
+        let components = cal.dateComponents([.day,.month,.year], from: DatePicker.date)
+        let sdate = "\(components.day!)-\(components.month!)-\(components.year!)"
+
         print(sdate)
        
         if let stud = student {

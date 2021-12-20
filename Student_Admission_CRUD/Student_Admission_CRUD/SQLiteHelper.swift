@@ -106,7 +106,8 @@ class SQLiteHandler {
             sqlite3_bind_text(insStatement, 4, (stud.email as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insStatement, 5, (stud.password as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insStatement, 6, (stud.div as NSString).utf8String, -1, nil)
-            sqlite3_bind_double(insStatement, 7, stud.dob.timeIntervalSinceReferenceDate)
+            sqlite3_bind_text(insStatement, 7, (stud.dob as NSString).utf8String, -1, nil)
+            //sqlite3_bind_double(insStatement, 7, stud.dob.timeIntervalSinceReferenceDate)
             //Evalute Statement
             if sqlite3_step(insStatement) == SQLITE_DONE {
                 print("data inserted")
@@ -137,7 +138,8 @@ class SQLiteHandler {
             sqlite3_bind_text(upStatement, 3, (stud.email as NSString).utf8String, -1, nil)
             sqlite3_bind_text(upStatement, 4, (stud.password as NSString).utf8String, -1, nil)
             sqlite3_bind_text(upStatement, 5, (stud.div as NSString).utf8String, -1, nil)
-            sqlite3_bind_double(upStatement, 6, stud.dob.timeIntervalSinceReferenceDate)
+            sqlite3_bind_text(upStatement, 6, (stud.dob as NSString).utf8String, -1, nil)
+            //sqlite3_bind_double(upStatement, 6, stud.dob.timeIntervalSinceReferenceDate)
             sqlite3_bind_int(upStatement, 7, Int32(Int64(stud.spid)))
             //Evalute Statement
             if sqlite3_step(upStatement) == SQLITE_DONE {
@@ -198,7 +200,8 @@ class SQLiteHandler {
                 let email = String(cString: sqlite3_column_text(fetchStatement, 3))
                 let password = String(cString: sqlite3_column_text(fetchStatement, 4))
                 let div = String(cString: sqlite3_column_text(fetchStatement, 5))
-                let dob = Date(timeIntervalSinceReferenceDate:sqlite3_column_double(fetchStatement, 6))
+                let dob = String(cString: sqlite3_column_text(fetchStatement, 6))
+                //let dob = Date(timeIntervalSinceReferenceDate:sqlite3_column_double(fetchStatement, 6))
                 
                 emp.append(Student(spid: spid, uname: uname, gender: gender, email: email, password: password, div: div, dob: dob))
                 print("get")
@@ -214,29 +217,30 @@ class SQLiteHandler {
     
    //CheckAuth
     
-    func checkAuth(for spid:Int,for password:String,completion: @escaping ((Bool) -> Void)) -> [String] {
-        let checkString = "SELECT uname from stud where spid = ? and password = ?;"
+    func checkAuth(for spid:Int,for password:String) -> [Student] {
+        let checkString = "SELECT spid,uname,div,password from stud where spid = ? and password = ?;"
         var checkStatement:OpaquePointer? = nil
-        var user = ""
+        var stud = [Student]()
         
         if sqlite3_prepare_v2(db, checkString, -1, &checkStatement, nil) == SQLITE_OK {
             
             sqlite3_bind_int(checkStatement, 1, Int32(spid))
             sqlite3_bind_text(checkStatement, 2, (password as NSString).utf8String, -1, nil)
             //Evalute Statement
-            if sqlite3_step(checkStatement) == SQLITE_DONE {
-                user = String(cString: sqlite3_column_text(checkStatement, 1))
-                print(user)
+            while sqlite3_step(checkStatement) == SQLITE_ROW {
+                
+                let spid = Int(sqlite3_column_int(checkStatement, 0))
+                let uname = String(cString: sqlite3_column_text(checkStatement, 1))
+                let div = String(cString: sqlite3_column_text(checkStatement, 2))
+                let pass = String(cString: sqlite3_column_text(checkStatement, 3))
+    
+                stud.append(Student(spid: spid, uname: uname, gender: "", email: "", password: pass, div:div, dob:""))
                 print("Authenticate")
-                completion(true)
-            }else{
-                user = ""
-                print("Not Auth")
-                completion(false)
             }
-            
+        }else{
+                print("Not Auth")
         }
-        return [user]
+        return stud
     }
 
     
@@ -359,18 +363,21 @@ class SQLiteHandler {
     
     //get notice
     
-    func fetchStud() -> [NoticeDB] {
-        let fetchStatementString = "SELECT * FROM notice WHERE div='A';"
+    func fetchStud(for divi:String) -> [NoticeDB] {
+        let fetchStatementString = "SELECT * FROM notice where div = '\(divi)';"
         
         var fetchStatement:OpaquePointer? = nil
         
         var note = [NoticeDB]()
+        print("div \(divi)")
+        sqlite3_bind_text(fetchStatement, 1, (divi as NSString).utf8String, -1, nil)
         //Prapare Statement
         if sqlite3_prepare_v2(db, fetchStatementString, -1, &fetchStatement, nil) == SQLITE_OK {
             
             //sqlite3_bind_text(fetchStatement, 1, "A", -1, nil)
             //Evalute Statement
             while sqlite3_step(fetchStatement) == SQLITE_ROW {
+                print("gg")
                 let id = Int(sqlite3_column_int(fetchStatement, 0))
                 let title = String(cString: sqlite3_column_text(fetchStatement, 1))
                 let desc = String(cString: sqlite3_column_text(fetchStatement, 2))
@@ -380,6 +387,7 @@ class SQLiteHandler {
                 note.append(NoticeDB(id: id, title: title, desc: desc, div: div, don: don))
                 print("get division ")
             }
+            
         }
         else
         {
@@ -390,24 +398,28 @@ class SQLiteHandler {
     }
     
     
-    func fetchDetail() -> [Student] {
-        let fetchStatementString = "SELECT * from stud WHERE SPID=20211;"
+    func fetchDetail(for id:Int) -> [Student] {
+        let fetchStatementString = "SELECT * from stud WHERE spid = \(id) ;"
         
         var fetchStatement:OpaquePointer? = nil
         
         var detail = [Student]()
+        
+        //sqlite3_bind_int(fetchStatement, 1, Int32(id))
+        print(id)
         //Prapare Statement
         if sqlite3_prepare_v2(db, fetchStatementString, -1, &fetchStatement, nil) == SQLITE_OK {
-            
+
             //Evalute Statement
-            while sqlite3_step(fetchStatement) == SQLITE_ROW {
+            if sqlite3_step(fetchStatement) == SQLITE_ROW {
                 let spid = Int(sqlite3_column_int(fetchStatement, 0))
                 let uname = String(cString: sqlite3_column_text(fetchStatement, 1))
                 let gender = String(cString: sqlite3_column_text(fetchStatement, 2))
                 let email = String(cString: sqlite3_column_text(fetchStatement, 3))
                 let password = String(cString: sqlite3_column_text(fetchStatement, 4))
                 let div = String(cString: sqlite3_column_text(fetchStatement, 5))
-                let dob = Date(timeIntervalSinceReferenceDate:sqlite3_column_double(fetchStatement, 6))
+                let dob = String(cString: sqlite3_column_text(fetchStatement, 6))
+                //let dob = Date(timeIntervalSinceReferenceDate:sqlite3_column_double(fetchStatement, 6))
                 
                 detail.append(Student(spid: spid, uname: uname, gender: gender, email: email, password: password, div: div, dob: dob))
                 print("get")
@@ -419,6 +431,33 @@ class SQLiteHandler {
         }
         sqlite3_finalize(fetchStatement)
         return detail
+    }
+    
+    
+    func updatePass(for id:Int,for pass:String ,completion: @escaping ((Bool) -> Void)){
+        let upStatementString = "UPDATE stud SET password= ? WHERE spid = ?;"
+        
+        var upStatement:OpaquePointer? = nil
+        
+        //Prapare Statement
+        if sqlite3_prepare_v2(db, upStatementString, -1, &upStatement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_text(upStatement, 1, (pass as NSString).utf8String, -1, nil)
+            //sqlite3_bind_double(upStatement, 6, stud.dob.timeIntervalSinceReferenceDate)
+            sqlite3_bind_int(upStatement, 2, Int32(Int64(id)))
+            //Evalute Statement
+            if sqlite3_step(upStatement) == SQLITE_DONE {
+                print("update pass")
+                completion(true)
+            }else{
+                print("pass Not update")
+                completion(false)
+            }
+            
+        }else{
+            print("up not Prepared")
+        }
+        sqlite3_finalize(upStatement)
     }
     
 }

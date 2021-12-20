@@ -23,6 +23,7 @@
 		0B9CE356276754BB009A5F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CE354276754BB009A5F1E /* LaunchScreen.storyboard */; };
 		0B9CE35E27675EF9009A5F1E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE35D27675EF9009A5F1E /* LoginVC.swift */; };
 		0B9CE36027676E22009A5F1E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE35F27676E22009A5F1E /* Extension.swift */; };
+		0BA339A2277059FD0074EC2F /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA339A1277059FD0074EC2F /* ChangePassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		0B9CE357276754BB009A5F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B9CE35D27675EF9009A5F1E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		0B9CE35F27676E22009A5F1E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		0BA339A1277059FD0074EC2F /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				0B25D50A27688A7D00076D81 /* Student.swift */,
 				0B14E3A2276C9E2E001AAE5B /* StudentNoticeView.swift */,
 				0B34B2BA276DED43003EFAE2 /* DetailView.swift */,
+				0BA339A1277059FD0074EC2F /* ChangePassword.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				0B34B2BB276DED43003EFAE2 /* DetailView.swift in Sources */,
 				0B11AC64276A172B0050E575 /* NoticeDB.swift in Sources */,
 				0B25D50B27688A7D00076D81 /* Student.swift in Sources */,
+				0BA339A2277059FD0074EC2F /* ChangePassword.swift in Sources */,
 				0B9CE36027676E22009A5F1E /* Extension.swift in Sources */,
 				0B25D5092768644600076D81 /* AddStudent.swift in Sources */,
 				0B14E3A1276C8794001AAE5B /* CollectionViewCell.swift in Sources */,

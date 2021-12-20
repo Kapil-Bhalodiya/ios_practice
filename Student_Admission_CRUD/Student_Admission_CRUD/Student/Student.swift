@@ -8,10 +8,10 @@ class Student {
     var email : String = ""
     var password : String = ""
     var div : String = ""
-    var dob : Date
+    var dob : String = ""
     
 
-init(spid:Int,uname:String,gender:String,email:String,password:String,div:String,dob:Date) {
+init(spid:Int,uname:String,gender:String,email:String,password:String,div:String,dob:String) {
         self.spid = spid
         self.uname = uname
         self.gender = gender

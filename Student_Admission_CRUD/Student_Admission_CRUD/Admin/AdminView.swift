@@ -36,17 +36,28 @@ class AdminView: UIViewController {
         title = "Admin"
         view.addSubview(tblview)
         view.addSubview(myToll)
+        view.addSubview(logoutbtn)
         view.backgroundColor = .white
         tblViewSetup()
         view.addSubview(tabbar)
         tabbar.delegate = self
     }
     
+    private let logoutbtn : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("LOGOUT", for: .normal)
+        btn.backgroundColor = #colorLiteral(red: 0.02956351541, green: 0.4719276231, blue: 0, alpha: 1)
+        btn.addTarget(self, action: #selector(logoutclicked), for: .touchUpInside)
+        btn.layer.cornerRadius = 20
+        return btn
+    }()
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let toolBarHeight : CGFloat = view.safeAreaInsets.top + 10.0
         myToll.frame = CGRect(x: 0, y: 20, width: view.width, height: toolBarHeight)
         tblview.frame = CGRect(x: 0, y: myToll.bottom + 10, width: view.frame.width, height: view.frame.height)
+        logoutbtn.frame = CGRect(x: -20, y: 20, width: 150, height: 40)
         let tabbarheight:CGFloat=view.safeAreaInsets.bottom + 70.0
         tabbar.frame = CGRect(x : 0,y : view.height - tabbarheight,width : view.width ,height : tabbarheight )
     }
@@ -73,7 +84,10 @@ class AdminView: UIViewController {
         }
     }
     
-    
+    @objc func logoutclicked(){
+        let logout = LoginVC()
+        navigationController?.pushViewController(logout, animated: true)
+    }
 }
 extension AdminView:UITableViewDelegate,UITableViewDataSource {
     func tblViewSetup(){

@@ -8,29 +8,14 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
-
-    private let mylbl:UILabel={
-        let lbl = UILabel()
-        lbl.text = "Login"
-        lbl.textColor = #colorLiteral(red: 0.06836972239, green: 0.4769875324, blue: 0, alpha: 1)
-        lbl.font = UIFont.boldSystemFont(ofSize: 80)
-        lbl.font = UIFont(name: "Arial", size: 40)
-        return lbl
-    }()
+class ChangePassword: UIViewController {
     
-    private let displaylbl:UILabel={
-        let lbl = UILabel()
-        lbl.textColor = .black
-        lbl.text = "Please Sign in to Continue...."
-        lbl.font = lbl.font.withSize(10)
-        return lbl
-    }()
-    
-    private let txtEmail:UITextField = {
+    private let txtOldPass:UITextField = {
+        
         let email = UITextField()
+        
         email.layer.cornerRadius = 10
-        email.placeholder = "Email ID"
+        email.placeholder = "Old Password"
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: email.height))
         email.leftViewMode = .always
         email.layer.shadowOffset = CGSize(width: 3, height: 3)
@@ -45,12 +30,12 @@ class LoginVC: UIViewController {
         email.rightViewMode = .always
         return email
     }()
-   
-    private let txtPass:UITextField = {
+    
+    private let txtNewPass:UITextField = {
         let password = UITextField()
         password.layer.cornerRadius = 10
         password.textColor = .black
-        password.placeholder = "Password"
+        password.placeholder = "New Password"
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: password.height))
         password.leftViewMode = .always
         password.layer.shadowColor = UIColor.gray.cgColor
@@ -67,9 +52,31 @@ class LoginVC: UIViewController {
         return password
     }()
     
+    private let txtReNewPass:UITextField = {
+        let password = UITextField()
+        password.layer.cornerRadius = 10
+        password.textColor = .black
+        password.placeholder = "New Password"
+        password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: password.height))
+        password.leftViewMode = .always
+        password.layer.shadowColor = UIColor.gray.cgColor
+        password.layer.shadowOffset = CGSize(width: 3, height: 3)
+        password.layer.shadowOpacity = 1.0
+        password.layer.shadowRadius = 4.0
+        password.layer.borderWidth = 0.5
+        password.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        let img = UIImageView(frame: CGRect(x: 2, y: 2, width: 40, height: 20))
+        img.contentMode = .scaleAspectFit
+        img.image = #imageLiteral(resourceName: "password-icon")
+        password.rightView = img
+        password.rightViewMode = .always
+        return password
+    }()
+    
+    
     private let loginbtn:UIButton = {
         let btn = UIButton()
-        btn.setTitle("LOGIN", for: .normal)
+        btn.setTitle("Save", for: .normal)
         btn.backgroundColor = #colorLiteral(red: 0.1769022816, green: 0.5545053433, blue: 0.07903720916, alpha: 1)
         btn.layer.cornerRadius = 10
         btn.addTarget(self, action: #selector(loginClick), for: .touchUpInside)
@@ -78,33 +85,32 @@ class LoginVC: UIViewController {
     }()
     
     @objc func loginClick(){
-        let spid = Int(txtEmail.text!)!
-        let pass = txtPass.text ?? ""
-        if spid == 1 && pass == "1" {
-            let admin = AdminView()
-            navigationController?.pushViewController(admin, animated: true)
-        }else{
-                var StudArray = [Student]()
-                StudArray = SQLiteHandler.sahred.checkAuth(for: spid, for: pass)
-                if StudArray.count > 0 {
-                    UserDefaults.standard.setValue(StudArray[0].uname, forKey: "uname")
-                    UserDefaults.standard.setValue(StudArray[0].spid, forKey: "spid")
-                    UserDefaults.standard.setValue(StudArray[0].div, forKey: "div")
-                    UserDefaults.standard.setValue(StudArray[0].password, forKey: "password")
-                        let Stud = StudentView()
-                        self.navigationController?.pushViewController(Stud,animated: true)
+        if txtOldPass.text == UserDefaults.standard.string(forKey: "password")
+        {
+            let pass = txtNewPass.text!
+            let repass = txtReNewPass.text!
+            if pass == repass {
+                SQLiteHandler.sahred.updatePass(for: Int(UserDefaults.standard.string(forKey: "spid")!) ?? 0, for: pass){
+                    success in
+                    if success {
+                        print("Updated PASS")
+                        let ls = LoginVC()
+                        self.navigationController?.pushViewController(ls, animated: true)
+                    }else{
+                        print("not Pass Updated")
+                    }
                 }
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(mylbl)
-        view.addSubview(displaylbl)
-        view.addSubview(txtEmail)
-        view.addSubview(txtPass)
+        view.addSubview(txtOldPass)
+        view.addSubview(txtNewPass)
+        view.addSubview(txtReNewPass)
         view.addSubview(loginbtn)
-        SQLiteHandler.sahred.openDatabase()
+        //SQLiteHandler.sahred.openDatabase()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,10 +121,9 @@ class LoginVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mylbl.frame = CGRect(x: 20, y: 90, width: view.width, height: 60)
-        displaylbl.frame = CGRect(x: 20, y: mylbl.bottom + 10, width: view.width-150, height: 20)
-        txtEmail.frame = CGRect(x: 60, y: 350, width: view.width - 120, height: 40)
-        txtPass.frame = CGRect(x: 60, y: txtEmail.bottom + 20, width: view.width - 120, height: 40)
-        loginbtn.frame = CGRect(x: 120, y: txtPass.bottom + 60, width: view.width - 240, height: 40)
+        txtOldPass.frame = CGRect(x: 60, y: 350, width: view.width - 120, height: 40)
+        txtNewPass.frame = CGRect(x: 60, y: txtOldPass.bottom + 10, width: view.width - 120, height: 40)
+        txtReNewPass.frame = CGRect(x: 60, y: txtNewPass.bottom+10, width: view.width - 120, height: 40)
+        loginbtn.frame = CGRect(x: 120, y: txtReNewPass.bottom + 50, width: view.width - 240, height: 40)
     }
 }

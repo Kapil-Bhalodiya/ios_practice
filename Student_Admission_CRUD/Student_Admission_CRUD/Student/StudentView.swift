@@ -28,7 +28,7 @@ class StudentView: UIViewController {
     
     private let nameLabel:UILabel = {
         let label = UILabel()
-        label.text = "Jaydip"
+        label.text = UserDefaults.standard.string(forKey: "uname") ?? ""
         label.textColor = #colorLiteral(red: 0.09485176601, green: 0.4562216645, blue: 0, alpha: 1)
         return label
     }()
@@ -61,7 +61,8 @@ class StudentView: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(logoutbtn)
         view.addSubview(tabbar)
-        notesArray = SQLiteHandler.sahred.fetchStud()
+        
+        notesArray = SQLiteHandler.sahred.fetchStud(for: UserDefaults.standard.string(forKey: "div") ?? "")
         setData()
         tabbar.delegate = self
     }
@@ -76,18 +77,17 @@ class StudentView: UIViewController {
         mycollection.frame = view.bounds
         titleLabel.frame = CGRect(x: 20, y: 50, width: 150, height: 30)
         nameLabel.frame = CGRect(x: 20, y: titleLabel.bottom + 10, width: 150, height: 30)
-        logoutbtn.frame = CGRect(x: 250, y: 50, width: 150, height: 40)
+        logoutbtn.frame = CGRect(x: 250, y: 60, width: 150, height: 40)
         let tabbarheight:CGFloat=view.safeAreaInsets.bottom + 70.0
         tabbar.frame = CGRect(x : 0,y : view.height - tabbarheight,width : view.width ,height : tabbarheight )
     }
     
     @objc func logoutclicked(){
+        UserDefaults.standard.setValue(nil, forKey: "uname")
+        UserDefaults.standard.setValue(nil, forKey: "div")
+        UserDefaults.standard.setValue(nil, forKey: "spid")
         let logout = LoginVC()
         navigationController?.pushViewController(logout, animated: true)
-    }
-    
-    @objc func ClickInfo(){
-        
     }
 }
 extension StudentView: UICollectionViewDelegate,UICollectionViewDataSource {
