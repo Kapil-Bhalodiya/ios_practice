@@ -19,7 +19,7 @@ class StudentView: UIViewController {
         tool.items = [item1]
         return tool
     }()
-
+    
     private let titleLabel:UILabel = {
         let label = UILabel()
         label.text = "Welcome ,"
@@ -62,14 +62,14 @@ class StudentView: UIViewController {
         view.addSubview(logoutbtn)
         view.addSubview(tabbar)
         
-//        notesArray = SQLiteHandler.sahred.fetchStud(for: UserDefaults.standard.string(forKey: "div") ?? "")
+        //        notesArray = SQLiteHandler.sahred.fetchStud(for: UserDefaults.standard.string(forKey: "div") ?? "")
         setData()
         tabbar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-         navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,38 +94,38 @@ extension StudentView: UICollectionViewDelegate,UICollectionViewDataSource {
     func setData(){
         mycollection.delegate = self
         mycollection.dataSource = self
-//        mycollection.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        //        mycollection.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("Count : \(notesArray.count)")
         return notesArray.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) //as! CollectionViewCell
-//        cell.SetUpCell(with: notesArray[indexPath.row])
-//        cell.layer.borderWidth = 0.5
-//        cell.layer.shadowOpacity = 0.5
-//        cell.layer.shadowOffset = CGSize(width: 3, height: 3)
-//        cell.layer.shadowRadius = 4.0
-//        cell.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-//        cell.layer.cornerRadius = 30
+        //        cell.SetUpCell(with: notesArray[indexPath.row])
+        //        cell.layer.borderWidth = 0.5
+        //        cell.layer.shadowOpacity = 0.5
+        //        cell.layer.shadowOffset = CGSize(width: 3, height: 3)
+        //        cell.layer.shadowRadius = 4.0
+        //        cell.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        //        cell.layer.cornerRadius = 30
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let seeNote = StudentNoticeView()
-//        seeNote.seenotice = notesArray[indexPath.row]
-//        navigationController?.pushViewController(seeNote, animated: true)
+        //        let seeNote = StudentNoticeView()
+        //        seeNote.seenotice = notesArray[indexPath.row]
+        //        navigationController?.pushViewController(seeNote, animated: true)
     }
 }
 extension StudentView : UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        if item.title == "info" {
-//            let ds = DetailView()
-//            navigationController?.pushViewController(ds, animated: true)
-//        }
+        //        if item.title == "info" {
+        //            let ds = DetailView()
+        //            navigationController?.pushViewController(ds, animated: true)
+        //        }
     }
 }

@@ -1,3 +1,4 @@
+
 //
 //  AdminView.swift
 //  Student_Admission_CRUD
@@ -31,8 +32,18 @@ class AdminView: UIViewController {
         return tool
     }()
     
+    private let logoutbtn : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("LOGOUT", for: .normal)
+        btn.backgroundColor = #colorLiteral(red: 0.02956351541, green: 0.4719276231, blue: 0, alpha: 1)
+        btn.addTarget(self, action: #selector(logoutclicked), for: .touchUpInside)
+        btn.layer.cornerRadius = 20
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("AdminView")
         title = "Admin"
         view.addSubview(tblview)
         view.addSubview(myToll)
@@ -42,15 +53,6 @@ class AdminView: UIViewController {
         view.addSubview(tabbar)
         tabbar.delegate = self
     }
-    
-    private let logoutbtn : UIButton = {
-        let btn = UIButton()
-        btn.setTitle("LOGOUT", for: .normal)
-        btn.backgroundColor = #colorLiteral(red: 0.02956351541, green: 0.4719276231, blue: 0, alpha: 1)
-        btn.addTarget(self, action: #selector(logoutclicked), for: .touchUpInside)
-        btn.layer.cornerRadius = 20
-        return btn
-    }()
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -65,12 +67,12 @@ class AdminView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if tabbar.selectedItem?.title == "Student" {
-            studArray = SQLiteHandler.sahred.fetch()
-            //print(studArray)
-            //tblview.reloadData()
+            studArray = CoreDataHandler.shared.fetchStud()
+            print(studArray)
+            tblview.reloadData()
         }else{
-//            NoteArray = SQLiteHandler.sahred.fetchNote()
-//            tblview.reloadData()
+            NoteArray = CoreDataHandler.shared.fetchNote()
+            tblview.reloadData()
         }
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -97,9 +99,9 @@ extension AdminView:UITableViewDelegate,UITableViewDataSource {
         tblview.register(UITableViewCell.self, forCellReuseIdentifier: "NameCell")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         if tabbar.selectedItem?.title == "Student" {
+        if tabbar.selectedItem?.title == "Student" {
             return studArray.count
-         }else{
+        }else{
             return NoteArray.count
         }
     }
@@ -109,10 +111,10 @@ extension AdminView:UITableViewDelegate,UITableViewDataSource {
         
         if tabbar.selectedItem?.title == "Student" {
             let stud = studArray[indexPath.row]
-            cell.textLabel?.text = "\(stud.spid) \t | \t \(stud.uname) \t | \t \(stud.gender) | \t \(stud.email) | \t \(stud.div) | \t \(stud.dob)"
+            cell.textLabel?.text = "\(stud.spid) \t | \t \(stud.password!) \t | \t \(stud.gender!) | \t \(stud.email!) | \t \(stud.div!) | \t \(stud.dob!)"
         }else{
             let note = NoteArray[indexPath.row]
-            cell.textLabel?.text = "\(note.title) | \t  \(note.div)"
+            cell.textLabel?.text = "\(note.title!) | \t  \(note.div!)"
         }
         return cell
     }
@@ -128,7 +130,7 @@ extension AdminView:UITableViewDelegate,UITableViewDataSource {
             let add = AddStudent()
             add.student = studArray[indexPath.row]
             navigationController?.pushViewController(add, animated: true)
-        }else{
+        }else if tabbar.selectedItem?.title == "Notice" {
             let add = AddNotice()
             add.notice = NoteArray[indexPath.row]
             navigationController?.pushViewController(add, animated: true)
@@ -138,40 +140,40 @@ extension AdminView:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tabbar.selectedItem?.title == "Student" {
-        let id = studArray[indexPath.row].spid
-            SQLiteHandler.sahred.delete(for: id){
-                success in
-                if success {
-                    print(id)
-                    self.studArray.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
-                }else{
-                    print("not delete")
-                }
-            }
+            let id = studArray[indexPath.row].spid
+            //            SQLiteHandler.sahred.delete(for: id){
+            //                success in
+            //                if success {
+            //                    print(id)
+            //                    self.studArray.remove(at: indexPath.row)
+            //                    tableView.deleteRows(at: [indexPath], with: .automatic)
+            //                }else{
+            //                    print("not delete")
+            //                }
+            //            }
         }else{
-            let id = NoteArray[indexPath.row].id
-            SQLiteHandler.sahred.deleteNote(for: id){
-                success in
-                if success {
-                    print(id)
-                    self.NoteArray.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
-                }else{
-                    print("note not delete")
-                }
-            }
+            //            let id = NoteArray[indexPath.row].id
+            //            SQLiteHandler.sahred.deleteNote(for: id){
+            //                success in
+            //                if success {
+            //                    print(id)
+            //                    self.NoteArray.remove(at: indexPath.row)
+            //                    tableView.deleteRows(at: [indexPath], with: .automatic)
+            //                }else{
+            //                    print("note not delete")
+            //                }
+            //            }
         }
     }
 }
 extension AdminView: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.title == "Student" {
-            studArray = SQLiteHandler.sahred.fetch()
+            studArray = CoreDataHandler.shared.fetchStud()
             tblview.reloadData()
         }else{
             studArray.removeAll()
-            NoteArray = SQLiteHandler.sahred.fetchNote()
+            NoteArray = CoreDataHandler.shared.fetchNote()
             tblview.reloadData()
         }
     }

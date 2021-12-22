@@ -9,9 +9,9 @@
 import UIKit
 
 class AddNotice: UIViewController {
-
+    
     var notice : NoticeDB?
-
+    
     private let headlbl:UILabel={
         
         let lbl = UILabel()
@@ -22,8 +22,8 @@ class AddNotice: UIViewController {
         lbl.textAlignment = .center
         return lbl
     }()
-
-
+    
+    
     private let titleText:UITextField = {
         let user = UITextField()
         user.layer.cornerRadius = 10
@@ -36,8 +36,8 @@ class AddNotice: UIViewController {
         user.layer.borderWidth = 1.0
         return user
     }()
-
-
+    
+    
     private let contentText:UITextField = {
         let email = UITextField()
         email.layer.cornerRadius = 10
@@ -50,7 +50,7 @@ class AddNotice: UIViewController {
         email.layer.borderWidth = 1.0
         return email
     }()
-
+    
     private let division : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "A", at: 0, animated: true)
@@ -70,7 +70,7 @@ class AddNotice: UIViewController {
         dp.datePickerMode = UIDatePicker.Mode.date
         return dp
     }()
-
+    
     private let registerbtn:UIButton = {
         let btn = UIButton()
         btn.setTitle("ADD", for: .normal)
@@ -80,7 +80,7 @@ class AddNotice: UIViewController {
         btn.setTitleColor(.white, for: .normal)
         return btn
     }()
-
+    
     @objc func registerClick(){
         
         let title = titleText.text!
@@ -92,40 +92,39 @@ class AddNotice: UIViewController {
         print(don)
         
         if let note = notice {
-//            let upNote = NoticeDB(id: note.id, title: title, desc: desc, div: div, don: don)
-//            updatenotice(note: upNote)
+            //            let upNote = NoticeDB(id: note.id, title: title, desc: desc, div: div, don: don)
+            //            updatenotice(note: upNote)
             
         }else{
-//            let insNote = NoticeDB(id: 0, title: title, desc: desc, div: div, don: don)
-//            insertnotice(note: insNote)
+            CoreDataHandler.shared.insertNote(title: title, desc: desc, div: div, don: don)
         }
         
         //        let login = LoginVC()
         //        navigationController?.pushViewController(login, animated: true)
     }
-
+    
     private func insertnotice(note:NoticeDB){
-//        SQLiteHandler.sahred.insertNote(note: note){
-//            success in
-//            if success {
-//                print("inserted Note")
-//            }else{
-//                print("not insert Note")
-//            }
-//        }
+        //        SQLiteHandler.sahred.insertNote(note: note){
+        //            success in
+        //            if success {
+        //                print("inserted Note")
+        //            }else{
+        //                print("not insert Note")
+        //            }
+        //        }
     }
-
+    
     private func updatenotice(note:NoticeDB){
-//        SQLiteHandler.sahred.updateNote(note: note){
-//            success in
-//            if success {
-//                print("Update Note")
-//            }else{
-//                print("Note not update")
-//            }
-//        }
+        //        SQLiteHandler.sahred.updateNote(note: note){
+        //            success in
+        //            if success {
+        //                print("Update Note")
+        //            }else{
+        //                print("Note not update")
+        //            }
+        //        }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -141,16 +140,16 @@ class AddNotice: UIViewController {
             titleText.text = note.title
             contentText.text = note.desc
             division.setTitle(note.div, forSegmentAt: division.selectedSegmentIndex)
-    //        let notedate = note.don
-    //        DatePicker.date = note.don)
+            //        let notedate = note.don
+            //        DatePicker.date = note.don)
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -161,5 +160,5 @@ class AddNotice: UIViewController {
         DatePicker.frame = CGRect(x: 60, y: division.bottom + 20, width: view.width - 120, height: 40)
         registerbtn.frame = CGRect(x: 60, y: DatePicker.bottom + 50, width: view.width - 120, height: 40)
         
-        }
+    }
 }
