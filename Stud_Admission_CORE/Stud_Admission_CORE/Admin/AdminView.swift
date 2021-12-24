@@ -140,29 +140,17 @@ extension AdminView:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tabbar.selectedItem?.title == "Student" {
-            let id = studArray[indexPath.row].spid
-            //            SQLiteHandler.sahred.delete(for: id){
-            //                success in
-            //                if success {
-            //                    print(id)
-            //                    self.studArray.remove(at: indexPath.row)
-            //                    tableView.deleteRows(at: [indexPath], with: .automatic)
-            //                }else{
-            //                    print("not delete")
-            //                }
-            //            }
+            let id = studArray[indexPath.row]
+            CoreDataHandler.shared.delete(stud: id){
+                self.studArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }else{
-            //            let id = NoteArray[indexPath.row].id
-            //            SQLiteHandler.sahred.deleteNote(for: id){
-            //                success in
-            //                if success {
-            //                    print(id)
-            //                    self.NoteArray.remove(at: indexPath.row)
-            //                    tableView.deleteRows(at: [indexPath], with: .automatic)
-            //                }else{
-            //                    print("note not delete")
-            //                }
-            //            }
+            let noteid = NoteArray[indexPath.row]
+            CoreDataHandler.shared.deleteNote(note: noteid){
+                self.NoteArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
 }

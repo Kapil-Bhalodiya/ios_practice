@@ -18,6 +18,7 @@
 		0B04BB0727733CE4006A2B3A /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04BB0627733CE4006A2B3A /* AdminView.swift */; };
 		0B04BB0927733D12006A2B3A /* AddStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04BB0827733D12006A2B3A /* AddStudent.swift */; };
 		0B04BB0B27733F10006A2B3A /* AddNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04BB0A27733F10006A2B3A /* AddNotice.swift */; };
+		0B1344292775A7310098247A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1344282775A7310098247A /* CollectionViewCell.swift */; };
 		0BCD4603277346A500716C08 /* StudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCD4602277346A500716C08 /* StudentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		0B04BB0627733CE4006A2B3A /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		0B04BB0827733D12006A2B3A /* AddStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudent.swift; sourceTree = "<group>"; };
 		0B04BB0A27733F10006A2B3A /* AddNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotice.swift; sourceTree = "<group>"; };
+		0B1344282775A7310098247A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0BCD4602277346A500716C08 /* StudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				0BCD4602277346A500716C08 /* StudentView.swift */,
+				0B1344282775A7310098247A /* CollectionViewCell.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1344292775A7310098247A /* CollectionViewCell.swift in Sources */,
 				0B04BAF327733B5B006A2B3A /* Stud_Admission_CORE.xcdatamodeld in Sources */,
 				0B04BB0727733CE4006A2B3A /* AdminView.swift in Sources */,
 				0B04BB0227733BAB006A2B3A /* CoreDataHandler.swift in Sources */,

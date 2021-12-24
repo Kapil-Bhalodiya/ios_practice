@@ -129,7 +129,7 @@ class AddStudent: UIViewController {
         print("Date is : \(date)")
         
         if let stud = student {
-            CoreDataHandler.shared.updateStud(stud: student!,spid: spid, gender: uname, email: gen, password: email, uname: password, div: div, dob: Dob)
+            CoreDataHandler.shared.updateStud(stud: student!,spid: spid, gender: gen, email: email, password: password, uname: uname, div: div, dob: Dob)
         }else{
             print("Stud ")
             CoreDataHandler.shared.insert(spid: spid, gender: gen, email: email, password: password, uname:uname, div: div, dob: Dob){
@@ -183,6 +183,8 @@ class AddStudent: UIViewController {
         
         if let stud = student {
             registerbtn.setTitle("UPDATE", for: .normal)
+            spidtxt.text = String(stud.spid)
+            spidtxt.isEnabled = false
             spidtxt.text = String(stud.spid)
             reguser.text = stud.uname
             regEmail.text = stud.email

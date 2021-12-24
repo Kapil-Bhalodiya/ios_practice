@@ -24,6 +24,44 @@ class CoreDataHandler {
         appDelegate.saveContext()
     }
     
+   
+    
+    func Auth(spid:Int,password:String)-> [Student]{
+        var getdata = [Student]()
+        let fetchRequest:NSFetchRequest = Student.fetchRequest()
+        let spidcpredict = NSPredicate(format: "spid contains \(spid) AND password contains \(password)")
+        
+       // let passcpredict = NSPredicate(format: "password contains %@", password)
+        //let both = NSCompoundPredicate(andPredicateWithSubpredicates: [spidcpredict,passcpredict] )
+        fetchRequest.predicate = spidcpredict
+        
+        do{
+            getdata = try (managedObjectContext?.fetch(fetchRequest))!
+            print(getdata.count)
+            return getdata
+        }catch{
+            print("Error")
+            return getdata
+        }
+    }
+    
+    func fetchDiv(for div: String) -> [NoticeDB] {
+        var getNoteData = [NoticeDB]()
+        let fr:NSFetchRequest = NoticeDB.fetchRequest()
+        let predict  = NSPredicate(format: "div contains \(div)")
+        fr.predicate = predict
+        do{
+            try (managedObjectContext?.fetch(fr))
+            return getNoteData
+        }catch{
+            return getNoteData
+        }
+    }
+    
+   
+    // Student
+    
+    
     func insert(spid:Int, gender: String, email:String, password:String, uname:String, div:String, dob:String,completion: @escaping((Bool) -> Void)){
         let stud = Student(context: managedObjectContext!)
         
@@ -39,25 +77,6 @@ class CoreDataHandler {
         completion(true)
     }
     
-    func Auth(spid:Int,password:String)-> [Student]{
-        var getdata = [Student]()
-        let fetchRequest:NSFetchRequest = Student.fetchRequest()
-        let spidcpredict = NSPredicate(format: "spid contains %i", spid)
-        
-        let passcpredict = NSPredicate(format: "password contains %@", password)
-        let both = NSCompoundPredicate(andPredicateWithSubpredicates: [spidcpredict,passcpredict] )
-        fetchRequest.predicate = both
-        
-        do{
-            getdata = try (managedObjectContext?.fetch(fetchRequest))!
-            print(getdata.count)
-            return getdata
-        }catch{
-            print("Error")
-            return getdata
-        }
-    }
-    
     func updateStud(stud:Student,spid:Int, gender: String, email:String, password:String, uname:String, div:String, dob:String){
         
         stud.uname = uname
@@ -70,18 +89,9 @@ class CoreDataHandler {
         
         save()
     }
-    //func update(stud: Student,name: String, age:Int, phone:String, completion: @escaping () -> Void){
     
-    //        emp.name = name
-    //        emp.age = Int64(age)
-    //        emp.phone = phone
-    //
-    //        save()
-    //        completion()
-    //}
-    
-    func delete(emp: Student, completion: @escaping () -> Void){
-        managedObjectContext!.delete(emp)
+    func delete(stud: Student, completion: @escaping () -> Void){
+        managedObjectContext!.delete(stud)
         save()
         completion()
     }
@@ -120,4 +130,11 @@ class CoreDataHandler {
             return [NoticeDB]()
         }
     }
+    
+    func deleteNote(note: NoticeDB, completion: @escaping () -> Void) {
+        managedObjectContext!.delete(note)
+        save()
+    }
+    
+   
 }
